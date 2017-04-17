@@ -1,0 +1,11 @@
+name = Schedule Migration
+description = "Provides a base migration from the patient schedules."
+core = 7.x
+dependencies[] = migrate
+dependencies[] = migrate_ui
+dependencies[] = migrate_extras
+; Migration classes
+files[] = migration/ContentOrderMigration.php
+files[] = migration/ContentPatientMigration.php
+files[] = migration/EntityScheduleMigration.php
+files[] = migration/TaxonomyInsuranceMigration.php
