@@ -45,25 +45,52 @@ Installing the micro Drupal site involves these general steps.
 
 [Fork the repo](https://help.github.com/articles/fork-a-repo/), then clone your forked copy with this:
 
-*  Visit drupal.org to download the latest Drupal 7 Core. 
+1.  Visit drupal.org to download the latest Drupal 7 Core. 
 
-*  Make your local database to host the project. 
+2.  Make your local database to host the project. 
   
-*  Install Drupal following the most up-to-date instructions
+3.  Install Drupal following the most up-to-date instructions
 
-*  Download -recommend use drush- the list of necessary contributed modules:
-   admin_menu, ctools, date, ds, eck, entityreference, features, field_group,
-   name, migrate, libraries, job_scheduler, entity, entity_token, entitycache, 
-   eck_entitycache, auto_entitylabel,token, token_formatters, views, 
-   views_bulk_operations
+4.  Download -recommend use drush- the list of necessary contributed modules:
+     * admin_menu
+     * auto_entitylabel
+     * cas
+     * ctools
+     * datatables
+     * date
+     * devel
+     * ds
+     * eck
+     * editableviews
+     * entity
+     * entitycache
+     * entityreference
+     * feeds
+     * feeds_entity_processor
+     * feeds_tamper
+     * field_group
+     * job_scheduler
+     * libraries
+     * migrate
+     * migrate_extras
+     * module_filter
+     * module-list.txt
+     * name
+     * schedule_migration
+     * superfish
+     * token
+     * token_formatters
+     * views
+     * views_bulk_operations
+     * wysiwyg
 
-*  Enable modules.
+5.  Enable modules.
 
-*  Clone this repo `git clone --branch 7.x-1.x git@github.com:UNMCCC/prior-auths-drupal7.git`
+6.  Clone this repo `git clone --branch 7.x-1.x git@github.com:UNMCCC/prior-auths-drupal7.git`
 
-*  copy modules and features. Enable them.
+7.  copy modules and features. Enable them.
 
-*  Prepare source feeds. 
+8.  Prepare source feeds. 
 
 ### Notes on source files
 
