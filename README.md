@@ -65,9 +65,6 @@ Installing the micro Drupal site involves these general steps.
      * entity
      * entitycache
      * entityreference
-     * feeds
-     * feeds_entity_processor
-     * feeds_tamper
      * field_group
      * job_scheduler
      * libraries
