@@ -28,7 +28,7 @@ class ContentPatientMigration extends Migration {
       7 => array('ins_provider', 'The insurance provider (ref)'),
    );
 
-    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/SQL_Chemo_AddOn_FEED.csv';
+    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/Patients.csv';
 
     $this->source = new MigrateSourceCSV($csv_file, $columns, $options);
 
@@ -91,7 +91,12 @@ class ContentPatientMigration extends Migration {
 
     // do we have this patient?
     $mrnid = $this->getPatient($row);
-    $row->mrn = $mrnid;
+    if($mrnid == -999999999999){
+      return FALSE;
+    }else{
+      $row->mrn = $mrnid;
+      return TRUE;
+    }
   }
 
   public function getPatient($row) {
@@ -105,7 +110,7 @@ class ContentPatientMigration extends Migration {
     $results = $query->execute();
     if (!empty($results['node'])) {
       watchdog('schedule_migration', "Existing Patient: Skip node creation: $row->lastname $row->firstname");
-      return FALSE; 
+      return -999999999999; 
     }else{
       $mrnid = $row->mrn;
       return $mrnid;

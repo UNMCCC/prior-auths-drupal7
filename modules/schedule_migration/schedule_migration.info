@@ -6,6 +6,11 @@ dependencies[] = migrate_ui
 dependencies[] = migrate_extras
 ; Migration classes
 files[] = migration/ContentOrderMigration.php
+files[] = migration/ContentPatientOrderMigration.php
 files[] = migration/ContentPatientMigration.php
-files[] = migration/EntityScheduleMigration.php
+files[] = migration/EntityScheduleChemoMigration.php
+files[] = migration/EntityScheduleMedicareMigration.php
+files[] = migration/EntityScheduleMedOncMigration.php
 files[] = migration/TaxonomyInsuranceMigration.php
+files[] = migration/TaxonomyActivityMedOncMigration.php
+files[] = migration/TaxonomyActivityMedicareMigration.php

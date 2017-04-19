@@ -22,11 +22,13 @@ class ContentOrderMigration extends Migration {
       0 => array('orc_id', 'The unique order id'),
       1 => array('start_date', 'The treatment start date and appt date'),
       2 => array('mrn', 'The patient medical record number - MRN'),
-      3 => array('pat_name', 'The patient name'),
-      4 => array('payer', 'The insurer'),
-      5 => array('order_description', 'The order description'),
-      6 => array('order_status', 'The order status'),
-      7 => array('orc_id_drug', 'Dummy field'),
+      3 => array('last_name', 'The patient name'),
+      4 => array('first_name', 'The patient name'),
+      5 => array('middle_name', 'The patient name'),
+      6 => array('payer', 'The insurer'),
+      7 => array('order_description', 'The order description'),
+      8 => array('order_status', 'The order status'),
+      9 => array('orc_id_drug', 'Dummy field'),
    );
 
    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/orders.csv';
@@ -66,10 +68,12 @@ class ContentOrderMigration extends Migration {
     $this->addFieldMapping('field_drug','order_description'); 
     $this->addFieldMapping('field_order_status','order_status');
     $this->addFieldMapping('field_order_id','orc_id');
+    $this->addFieldMapping('field_insurance_payer_', 'payer');
 
     $this->addUnmigratedSources(array(
-      'pat_name',    // The patient name
-      'payer',       // The insurer
+      'first_name',    // The patient frist name
+      'last_name',    // The patient last name
+      'middle_name',    // The patient's middle name
     ));
 
     $this->addUnmigratedDestinations(array(
@@ -84,7 +88,7 @@ class ContentOrderMigration extends Migration {
        'tnid',                   //   The translation set id for this node
        'translate',	         //   A boolean indicating whether this translation page needs to be updated
        'revision_uid',	         //   Modified (uid)
-       'is_new',  
+       'is_new',
     ));
   }
 
@@ -122,11 +126,10 @@ class ContentOrderMigration extends Migration {
       $results = $query->execute();
       if (!empty($results['node'])) {
         $nid = reset($results['node'])->nid;
-        watchdog('schedule_migration', "query matches: $nid");
         return($nid);
       }else{
        // make a new patient to-do
-
+        watchdog('schedule_migration', "no MRN match: $row->mrn");
       } 
     }else{
         //there is no MRN, this is an orphan order

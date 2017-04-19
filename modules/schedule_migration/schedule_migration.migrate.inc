@@ -20,11 +20,26 @@ function schedule_migration_migrate_api() {
       'TaxonomyInsurance' => array(
         'class_name' => 'TaxonomyInsuranceMigration',
       ),
+      'TaxonomyActivityMedOnc' => array(
+        'class_name' => 'TaxonomyActivityMedOncMigration',
+      ),
+      'TaxonomyActivityMedicare' => array(
+        'class_name' => 'TaxonomyActivityMedicareMigration',
+      ),
       'ContentPatient' => array(
         'class_name' => 'ContentPatientMigration',
       ),
-      'EntitySchedule' => array(
-        'class_name' => 'EntityScheduleMigration',
+      'ContentPatientFromOrders' => array(
+        'class_name' => 'ContentPatientOrderMigration',
+      ),
+      'EntityMedicareSchedule' => array(
+        'class_name' => 'EntityScheduleMedicareMigration',
+      ),
+      'EntityMedOncSchedule' => array(
+        'class_name' => 'EntityScheduleMedOncMigration',
+      ),
+      'EntityChemoSchedule' => array(
+        'class_name' => 'EntityScheduleChemoMigration',
       ),
       'ContentOrder' => array(
         'class_name' => 'ContentOrderMigration',
