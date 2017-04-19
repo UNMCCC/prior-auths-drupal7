@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Patient Content Type feature.
+ */
+
+include_once 'patient_content_type.features.inc';
