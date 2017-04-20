@@ -43,6 +43,9 @@ function schedule_migration_migrate_api() {
       ),
       'ContentOrder' => array(
         'class_name' => 'ContentOrderMigration',
+      ),      
+      'ContentOrderSameday' => array(
+        'class_name' => 'ContentOrderSamedayMigration',
       ),
     ),
   );

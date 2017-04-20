@@ -21,6 +21,7 @@ class EntityScheduleChemoMigration extends Migration {
       5 => array('location', 'The location where patient is scheduled to'),
       6 => array('activity', 'The activity'),
       7 => array('ins_provider', 'The insurance provider (ref)'),
+      8 => array('notes', 'Relevant notes'),
     );
 
     $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/Chemo_Schedule.csv';
@@ -48,6 +49,7 @@ class EntityScheduleChemoMigration extends Migration {
       ->description('lookup insurance term in prepareRow'); // spin off term ref, or not?
     $this->addFieldMapping('field_patient_reference', 'mrn')
       ->description('lookup existing mrns, or create one in prepareRow');
+    $this->addFieldMapping('field_notes', 'notes');
 
     $this->addUnmigratedSources(array(
       'lastname',
