@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Operational Views feature.
+ */
+
+include_once 'operational_views.features.inc';

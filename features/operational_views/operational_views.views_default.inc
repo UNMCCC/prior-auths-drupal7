@@ -1,0 +1,864 @@
+<?php
+/**
+ * @file
+ * operational_views.views_default.inc
+ */
+
+/**
+ * Implements hook_views_default_views().
+ */
+function operational_views_views_default_views() {
+  $export = array();
+
+  $view = new view();
+  $view->name = 'assign_schedules_to_staff';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'eck_schedule';
+  $view->human_name = 'Assign Schedules to Staff';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Assign Schedules to Staff';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'id' => 'id',
+    'field_activity' => 'field_activity',
+    'field_app_date' => 'field_app_date',
+    'field_pa_status' => 'field_pa_status',
+    'views_bulk_operations' => 'views_bulk_operations',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'id' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_activity' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_app_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pa_status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Relationship: Schedule: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'eck_schedule';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_patient_reference_target_id']['id'] = 'field_patient_reference_target_id';
+  $handler->display->display_options['relationships']['field_patient_reference_target_id']['table'] = 'field_data_field_patient_reference';
+  $handler->display->display_options['relationships']['field_patient_reference_target_id']['field'] = 'field_patient_reference_target_id';
+  /* Field: Bulk operations: Schedule */
+  $handler->display->display_options['fields']['views_bulk_operations_1']['id'] = 'views_bulk_operations_1';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_operations'] = array(
+    'action::views_bulk_operations_change_owner_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Field: Schedule: App Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Name */
+  $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['table'] = 'field_data_field_name';
+  $handler->display->display_options['fields']['field_name']['field'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['relationship'] = 'field_patient_reference_target_id';
+  $handler->display->display_options['fields']['field_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'default',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: Schedule: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Schedule: PA Status */
+  $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Owner (INS VER)';
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'assign-schedules-to-staff';
+  $export['assign_schedules_to_staff'] = $view;
+
+  $view = new view();
+  $view->name = 'orderlist';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Orders';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Orders without appointment';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['style_plugin'] = 'datatables';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_location' => 'field_location',
+    'field_activity' => 'field_activity',
+    'field_start_date' => 'field_start_date',
+    'field_patient_ref' => 'field_patient_ref',
+    'field_mrn' => 'field_mrn',
+    'field_drug' => 'field_drug',
+    'field_order_status' => 'field_order_status',
+    'name' => 'name',
+    'field_staff_notes' => 'field_staff_notes',
+    'edit_link' => 'edit_link',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_location' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_activity' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_start_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_patient_ref' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mrn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_drug' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_order_status' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_staff_notes' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_link' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['elements'] = array(
+    'search_box' => 1,
+    'table_info' => 1,
+    'save_state' => 0,
+    'table_tools' => 0,
+  );
+  $handler->display->display_options['style_options']['layout'] = array(
+    'autowidth' => 0,
+    'themeroller' => 0,
+    'sdom' => '',
+  );
+  $handler->display->display_options['style_options']['pages'] = array(
+    'pagination_style' => 'no_pagination',
+    'length_change' => 0,
+    'display_length' => '10',
+  );
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_patient_ref_target_id']['id'] = 'field_patient_ref_target_id';
+  $handler->display->display_options['relationships']['field_patient_ref_target_id']['table'] = 'field_data_field_patient_ref';
+  $handler->display->display_options['relationships']['field_patient_ref_target_id']['field'] = 'field_patient_ref_target_id';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_patient_reference_schedule']['id'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['relationships']['reverse_field_patient_reference_schedule']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_patient_reference_schedule']['field'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['relationships']['reverse_field_patient_reference_schedule']['relationship'] = 'field_patient_ref_target_id';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Field: Content: Start Date */
+  $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['label'] = 'Appointment / Start Date';
+  $handler->display->display_options['fields']['field_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_start_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Schedule: Location */
+  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
+  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['relationship'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['fields']['field_location']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Schedule: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['relationship'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Patient */
+  $handler->display->display_options['fields']['field_patient_ref']['id'] = 'field_patient_ref';
+  $handler->display->display_options['fields']['field_patient_ref']['table'] = 'field_data_field_patient_ref';
+  $handler->display->display_options['fields']['field_patient_ref']['field'] = 'field_patient_ref';
+  $handler->display->display_options['fields']['field_patient_ref']['label'] = 'Patient (Last,Middle,First)';
+  $handler->display->display_options['fields']['field_patient_ref']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: MRN */
+  $handler->display->display_options['fields']['field_mrn']['id'] = 'field_mrn';
+  $handler->display->display_options['fields']['field_mrn']['table'] = 'field_data_field_mrn';
+  $handler->display->display_options['fields']['field_mrn']['field'] = 'field_mrn';
+  $handler->display->display_options['fields']['field_mrn']['relationship'] = 'field_patient_ref_target_id';
+  $handler->display->display_options['fields']['field_mrn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field: Insurance (Payer) */
+  $handler->display->display_options['fields']['field_insurance_payer_']['id'] = 'field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['table'] = 'field_data_field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['field'] = 'field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['relationship'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['fields']['field_insurance_payer_']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Order Description */
+  $handler->display->display_options['fields']['field_drug']['id'] = 'field_drug';
+  $handler->display->display_options['fields']['field_drug']['table'] = 'field_data_field_drug';
+  $handler->display->display_options['fields']['field_drug']['field'] = 'field_drug';
+  /* Field: Content: Order Status */
+  $handler->display->display_options['fields']['field_order_status']['id'] = 'field_order_status';
+  $handler->display->display_options['fields']['field_order_status']['table'] = 'field_data_field_order_status';
+  $handler->display->display_options['fields']['field_order_status']['field'] = 'field_order_status';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'INS VER';
+  /* Field: Schedule: Staff Notes */
+  $handler->display->display_options['fields']['field_staff_notes']['id'] = 'field_staff_notes';
+  $handler->display->display_options['fields']['field_staff_notes']['table'] = 'field_data_field_staff_notes';
+  $handler->display->display_options['fields']['field_staff_notes']['field'] = 'field_staff_notes';
+  $handler->display->display_options['fields']['field_staff_notes']['relationship'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['fields']['field_staff_notes']['label'] = 'PCC (Staff) Notes';
+  /* Field: Schedule: Auth Number (editable) */
+  $handler->display->display_options['fields']['field_auth_number_editable']['id'] = 'field_auth_number_editable';
+  $handler->display->display_options['fields']['field_auth_number_editable']['table'] = 'field_data_field_auth_number';
+  $handler->display->display_options['fields']['field_auth_number_editable']['field'] = 'field_auth_number_editable';
+  $handler->display->display_options['fields']['field_auth_number_editable']['relationship'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['fields']['field_auth_number_editable']['widget_type'] = '0';
+  $handler->display->display_options['fields']['field_auth_number_editable']['suppress_label'] = 0;
+  $handler->display->display_options['fields']['field_auth_number_editable']['suppress_description'] = 0;
+  /* Field: Schedule: Edit link */
+  $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
+  $handler->display->display_options['fields']['edit_link']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
+  $handler->display->display_options['fields']['edit_link']['relationship'] = 'reverse_field_patient_reference_schedule';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'order' => 'order',
+  );
+  /* Filter criterion: Schedule: Id */
+  $handler->display->display_options['filters']['id']['id'] = 'id';
+  $handler->display->display_options['filters']['id']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['id']['field'] = 'id';
+  $handler->display->display_options['filters']['id']['relationship'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['filters']['id']['operator'] = 'not empty';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/order-list';
+
+  /* Display: cloned */
+  $handler = $view->new_display('page', 'cloned', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Orders with appointment';
+  $handler->display->display_options['path'] = 'order-list';
+
+  /* Display: orders without schedules */
+  $handler = $view->new_display('page', 'orders without schedules', 'page_2');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Start Date */
+  $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['label'] = 'Order Start Date';
+  $handler->display->display_options['fields']['field_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_start_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Patient */
+  $handler->display->display_options['fields']['field_patient_ref']['id'] = 'field_patient_ref';
+  $handler->display->display_options['fields']['field_patient_ref']['table'] = 'field_data_field_patient_ref';
+  $handler->display->display_options['fields']['field_patient_ref']['field'] = 'field_patient_ref';
+  $handler->display->display_options['fields']['field_patient_ref']['label'] = 'Patient (Last,Middle,First)';
+  $handler->display->display_options['fields']['field_patient_ref']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Field: Insurance (Payer) */
+  $handler->display->display_options['fields']['field_insurance_payer_']['id'] = 'field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['table'] = 'field_data_field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['field'] = 'field_insurance_payer_';
+  /* Field: Content: Order Description */
+  $handler->display->display_options['fields']['field_drug']['id'] = 'field_drug';
+  $handler->display->display_options['fields']['field_drug']['table'] = 'field_data_field_drug';
+  $handler->display->display_options['fields']['field_drug']['field'] = 'field_drug';
+  /* Field: Content: Order Status */
+  $handler->display->display_options['fields']['field_order_status']['id'] = 'field_order_status';
+  $handler->display->display_options['fields']['field_order_status']['table'] = 'field_data_field_order_status';
+  $handler->display->display_options['fields']['field_order_status']['field'] = 'field_order_status';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'INS VER';
+  /* Field: Content: MRN */
+  $handler->display->display_options['fields']['field_mrn']['id'] = 'field_mrn';
+  $handler->display->display_options['fields']['field_mrn']['table'] = 'field_data_field_mrn';
+  $handler->display->display_options['fields']['field_mrn']['field'] = 'field_mrn';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'order' => 'order',
+  );
+  /* Filter criterion: Schedule: Id */
+  $handler->display->display_options['filters']['id']['id'] = 'id';
+  $handler->display->display_options['filters']['id']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['id']['field'] = 'id';
+  $handler->display->display_options['filters']['id']['relationship'] = 'reverse_field_patient_reference_schedule';
+  $handler->display->display_options['filters']['id']['operator'] = 'empty';
+  $handler->display->display_options['path'] = 'orphan-order-list';
+
+  /* Display: editable order with sched */
+  $handler = $view->new_display('page', 'editable order with sched', 'page_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Orders with appointment';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'editableviews_table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_start_date' => 'field_start_date',
+    'field_location' => 'field_location',
+    'field_activity' => 'field_activity',
+    'field_patient_ref' => 'field_patient_ref',
+    'field_mrn' => 'field_mrn',
+    'field_insurance_payer_' => 'field_insurance_payer_',
+    'field_drug' => 'field_drug',
+    'field_order_status' => 'field_order_status',
+    'name' => 'name',
+    'field_staff_notes' => 'field_staff_notes',
+    'field_auth_number_editable' => 'field_auth_number_editable',
+    'edit_link' => 'edit_link',
+  );
+  $handler->display->display_options['style_options']['default'] = 'name';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_start_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_location' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_activity' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_patient_ref' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mrn' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_insurance_payer_' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_drug' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_order_status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_staff_notes' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_auth_number_editable' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_link' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['relationship_creation_bundle'] = array(
+    'reverse_field_patient_reference_schedule' => 'schedule',
+  );
+  $handler->display->display_options['style_options']['batch_size'] = '10';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'order-and-appointment-list';
+  $export['orderlist'] = $view;
+
+  $view = new view();
+  $view->name = 'shc';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'eck_schedule';
+  $view->human_name = 'sch';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'sch';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['style_plugin'] = 'editableviews_table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_app_date' => 'field_app_date',
+    'field_patient_reference' => 'field_patient_reference',
+    'field_insurance_payer_' => 'field_insurance_payer_',
+    'field_activity' => 'field_activity',
+    'field_location' => 'field_location',
+    'name' => 'name',
+    'field_pa_status_editable' => 'field_pa_status_editable',
+    'field_staff_notes_editable' => 'field_staff_notes_editable',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_app_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_app_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_patient_reference' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_insurance_payer_' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_activity' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_location' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pa_status_editable' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_staff_notes_editable' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['batch_size'] = '10';
+  /* Relationship: Schedule: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'eck_schedule';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Field: Schedule: App Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Schedule: Patient */
+  $handler->display->display_options['fields']['field_patient_reference']['id'] = 'field_patient_reference';
+  $handler->display->display_options['fields']['field_patient_reference']['table'] = 'field_data_field_patient_reference';
+  $handler->display->display_options['fields']['field_patient_reference']['field'] = 'field_patient_reference';
+  $handler->display->display_options['fields']['field_patient_reference']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Field: Insurance (Payer) */
+  $handler->display->display_options['fields']['field_insurance_payer_']['id'] = 'field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['table'] = 'field_data_field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['field'] = 'field_insurance_payer_';
+  $handler->display->display_options['fields']['field_insurance_payer_']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Schedule: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Schedule: Location */
+  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
+  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Staff Name (INS VER)';
+  /* Field: Schedule: PA Status (editable) */
+  $handler->display->display_options['fields']['field_pa_status_editable']['id'] = 'field_pa_status_editable';
+  $handler->display->display_options['fields']['field_pa_status_editable']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status_editable']['field'] = 'field_pa_status_editable';
+  $handler->display->display_options['fields']['field_pa_status_editable']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pa_status_editable']['widget_type'] = '0';
+  $handler->display->display_options['fields']['field_pa_status_editable']['suppress_label'] = 1;
+  $handler->display->display_options['fields']['field_pa_status_editable']['suppress_description'] = 0;
+  /* Field: Schedule: Staff Notes (editable) */
+  $handler->display->display_options['fields']['field_staff_notes_editable']['id'] = 'field_staff_notes_editable';
+  $handler->display->display_options['fields']['field_staff_notes_editable']['table'] = 'field_data_field_staff_notes';
+  $handler->display->display_options['fields']['field_staff_notes_editable']['field'] = 'field_staff_notes_editable';
+  $handler->display->display_options['fields']['field_staff_notes_editable']['widget_type'] = '0';
+  $handler->display->display_options['fields']['field_staff_notes_editable']['suppress_label'] = 1;
+  $handler->display->display_options['fields']['field_staff_notes_editable']['suppress_description'] = 0;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'sch';
+
+  /* Display: chemo */
+  $handler = $view->new_display('page', 'chemo', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Schedule';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '481',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  $handler->display->display_options['path'] = 'chemo-schedule';
+
+  /* Display: medonc */
+  $handler = $view->new_display('page', 'medonc', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'MedOnc Schedule';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '482',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+    'No PA Needed' => 'No PA Needed',
+  );
+  $handler->display->display_options['path'] = 'medonc-schedule';
+
+  /* Display: medicare */
+  $handler = $view->new_display('page', 'medicare', 'page_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Schedule';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '483',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  $handler->display->display_options['path'] = 'medicare-schedule';
+  $export['shc'] = $view;
+
+  return $export;
+}

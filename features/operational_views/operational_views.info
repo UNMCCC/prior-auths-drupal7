@@ -1,0 +1,12 @@
+name = Operational Views
+core = 7.x
+package = Prior Auths
+dependencies[] = datatables
+dependencies[] = editableviews
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = assign_schedules_to_staff
+features[views_view][] = orderlist
+features[views_view][] = shc
+features_exclude[dependencies][ctools] = ctools
