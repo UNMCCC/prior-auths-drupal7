@@ -1,9 +1,9 @@
 <?php
 /**
  * @file
- * Definition of EntityScheduleChemoMigration.
+ * Definition of EntityScheduleChemoSamedayMigration.
  */
-class EntityScheduleChemoMigration extends Migration {
+class EntityScheduleChemoSamedayMigration extends Migration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
@@ -13,29 +13,34 @@ class EntityScheduleChemoMigration extends Migration {
     $options['delimiter'] = ",";
 
     $columns = array(
-      0 => array('date', 'The scheduled date of appointment'),
-      1 => array('mrn', 'The medical record number'),
-      2 => array('lastname', 'The patient last name'),
-      3 => array('firstname', 'The scanned first name'),
-      4 => array('middle', 'A Middle name'),
-      5 => array('location', 'The location where patient is scheduled to'),
-      6 => array('activity', 'The activity'),
-      7 => array('ins_provider', 'The insurance provider (ref)'),
-      8 => array('notes', 'Relevant notes'),
+      0 => array('orc_id', 'The unique order id'),
+      1 => array('date', 'The treatment start date and appt date'),
+      2 => array('mrn', 'The patient medical record number - MRN'),
+      3 => array('lastname', 'The patient name'),
+      4 => array('firstname', 'The patient name'),
+      5 => array('middle', 'The patient name'),
+      6 => array('notes', 'relevant notes'),
+      7 => array('ins_provider', 'The insurer'),
+      8 => array('order_description', 'The order description'),
+      9 => array('order_status', 'The order status'),
+      10 => array('location','Scheduled here'),
+      11 => array('activity','The activity to this appointment'),
+      12 => array('orc_id_drug', 'Dummy field'),
     );
 
-    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/Chemo_Schedule.csv';
+    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/sameday_orders.csv';
 
     $this->source = new MigrateSourceCSV($csv_file, $columns, $options);
-    $this->body = t('CSV Chemo Add On Schedule');
+    $this->body = t('CSV Chemo Same Day orders AddOn Schedule');
 
     $this->destination = new MigrateDestinationEntityAPI('schedule','schedule');
 
     // Tell Migrate the unique IDs for this migration live - watch for multiple appts.
-    $source_key_schema = array('mrn' => array(
+    $source_key_schema = array('orc_id_drug' => array(
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'description' => 'made up orc as unique ID',
       ),
     );
 
@@ -43,7 +48,8 @@ class EntityScheduleChemoMigration extends Migration {
 
     $this->addFieldMapping('field_department')->defaultValue('Chemo');
     $this->addFieldMapping('field_location', 'location');//this is also a term ref!!
-    $this->addFieldMapping('field_app_date', 'date'); // may need to work on
+    $this->addFieldMapping('field_app_date', 'date')
+     ->description('check whether we have it');
     $this->addFieldMapping('field_activity', 'activity');// need work, this is a term ref!!
     $this->addFieldMapping('field_insurance_payer_', 'ins_provider') 
       ->description('lookup insurance term in prepareRow'); // spin off term ref, or not?
@@ -78,20 +84,36 @@ class EntityScheduleChemoMigration extends Migration {
       'field_department:ignore_case',
     ));
   }
+
+  /**
+   * Prepare a proper unique key.
+   */
+  public function prepareKey($key, $row) {
+    $key = array();
+    $row->orc_id_drug = $row->mrn + rand(); 
+    $key['orc_id_drug'] = $row->orc_id_drug;
+    return $key;
+  }
+
  
   public function prepareRow($row) {
 
      parent::prepareRow($row);
 
-    //date
-    if(preg_match('/\d+\/\d+\/\d+\s\d+/',$row->date, $matches)){
-    } else if(preg_match('/\d+\/\d+\/\d+/',$row->date, $matches)){
-      $row->date = $row->date . ' 12:00:00 PM';
+    // if the date is today, create a schedule, otherwise skip.
+
+    $today = date("m/d/Y");
+
+    if( (string)$row->date != $today ){
+       dpm($row->date);
+       return FALSE; // skip this row.
     }
 
     // Is there a pat MRN?
     $mrnid = $this->getMrn($row);
     $row->mrn = $mrnid;
+    return;
+
   }
 
   public function getMrn($row) {
@@ -107,6 +129,8 @@ class EntityScheduleChemoMigration extends Migration {
       $query->entityCondition('entity_type', 'node');
       $query->entityCondition('bundle', 'patient');
       $query->fieldCondition('field_mrn', 'value', (int)$row->mrn, '=');
+      $query->fieldCondition('field_app_date', 'value', (int)$row->date, '=');
+
       $results = $query->execute();
       if (!empty($results['node'])) {
         $nid = reset($results['node'])->nid;

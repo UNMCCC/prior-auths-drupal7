@@ -7,11 +7,13 @@ dependencies[] = migrate_extras
 ; Migration classes
 files[] = migration/ContentOrderMigration.php
 files[] = migration/ContentOrderSamedayMigration.php
+files[] = migration/ContentPatientOrderSamedayMigration.php
 files[] = migration/ContentPatientOrderMigration.php
 files[] = migration/ContentPatientMigration.php
 files[] = migration/EntityScheduleChemoMigration.php
 files[] = migration/EntityScheduleMedicareMigration.php
 files[] = migration/EntityScheduleMedOncMigration.php
+files[] = migration/EntityScheduleChemoSamedayMigration.php
 files[] = migration/TaxonomyInsuranceMigration.php
 files[] = migration/TaxonomyActivityMedOncMigration.php
 files[] = migration/TaxonomyActivityMedicareMigration.php

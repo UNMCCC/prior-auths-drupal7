@@ -109,7 +109,7 @@ class ContentPatientMigration extends Migration {
     $query->fieldCondition('field_mrn', 'value',(int)$row->mrn, '=');
     $results = $query->execute();
     if (!empty($results['node'])) {
-      watchdog('schedule_migration', "Existing Patient: Skip node creation: $row->lastname $row->firstname");
+//      watchdog('schedule_migration', "Existing Patient: Skip node creation: $row->lastname $row->firstname");
       return -999999999999; 
     }else{
       $mrnid = $row->mrn;

@@ -110,7 +110,7 @@ class EntityScheduleMedOncMigration extends Migration {
       $results = $query->execute();
       if (!empty($results['node'])) {
         $nid = reset($results['node'])->nid;
-        watchdog('schedule_migration', "query matches: $nid");
+//        watchdog('schedule_migration', "query matches: $nid");
         return($nid);
       }else{
        // make a new patient to-do  --- should just run the previous migration...

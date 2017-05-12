@@ -1,12 +1,12 @@
 <?php
 /**
  * @file
- * Definition of ContentPatientOrderMigration.
+ * Definition of ContentPatientOrderSamedayMigration.
  * For now, lets ensure the patient in orders 
  * are in the system, otherwise, create them
  */
 
-class ContentPatientOrderMigration extends Migration {
+class ContentPatientOrderSamedayMigration extends Migration {
   protected $dependencies = array();
   public function __construct(array $arguments) {
 
@@ -26,10 +26,9 @@ class ContentPatientOrderMigration extends Migration {
       6 => array('payer', 'The insurer'),
       7 => array('order_description', 'The order description'),
       8 => array('order_status', 'The order status'),
-      9 => array('orc_id_drug', 'Dummy field'),
    );
 
-    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/orders.csv';
+    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/sameday_orders.csv';
 
     $this->source = new MigrateSourceCSV($csv_file, $columns, $options);
 
@@ -40,6 +39,7 @@ class ContentPatientOrderMigration extends Migration {
            'type' => 'int',
            'unsigned' => TRUE,
            'not null' => TRUE,
+           'description' => 'the unique MRN',
         )
       ),
       MigrateDestinationNode::getKeySchema()

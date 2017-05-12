@@ -32,6 +32,9 @@ function schedule_migration_migrate_api() {
       'ContentPatientFromOrders' => array(
         'class_name' => 'ContentPatientOrderMigration',
       ),
+      'ContentPatientFromOrderSameday' => array(
+        'class_name' => 'ContentPatientOrderSamedayMigration',
+      ),
       'EntityMedicareSchedule' => array(
         'class_name' => 'EntityScheduleMedicareMigration',
       ),
@@ -40,6 +43,9 @@ function schedule_migration_migrate_api() {
       ),
       'EntityChemoSchedule' => array(
         'class_name' => 'EntityScheduleChemoMigration',
+      ),
+      'EntityChemoSamedaySchedule' => array(
+        'class_name' => 'EntityScheduleChemoSamedayMigration',
       ),
       'ContentOrder' => array(
         'class_name' => 'ContentOrderMigration',

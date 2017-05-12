@@ -15,7 +15,7 @@ class ContentOrderSamedayMigration extends Migration {
     parent::__construct($arguments);
 
     $options = array();
-    $options['header_rows'] = 1;  //To-do, tweak source, or say 0
+    $options['header_rows'] = 0;  //To-do, tweak source, or say 0
     $options['delimiter'] = ",";
 
     $columns = array(
@@ -25,13 +25,16 @@ class ContentOrderSamedayMigration extends Migration {
       3 => array('last_name', 'The patient name'),
       4 => array('first_name', 'The patient name'),
       5 => array('middle_name', 'The patient name'),
-      6 => array('payer', 'The insurer'),
-      7 => array('order_description', 'The order description'),
-      8 => array('order_status', 'The order status'),
-      9 => array('orc_id_drug', 'Dummy field'),
+      6 => array('notes', 'relevant notes'),
+      7 => array('payer', 'The insurer'),
+      8 => array('order_description', 'The order description'),
+      9 => array('order_status', 'The order status'),
+      10 => array('location','Scheduled here'),
+      11 => array('activity','The activity to this appointment'),
+      12 => array('orc_id_drug', 'Dummy field'),
    );
 
-   $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/ordersameday.csv';
+   $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/sameday_orders.csv';
 
    $this->source = new MigrateSourceCSV($csv_file, $columns, $options);
 
@@ -59,11 +62,14 @@ class ContentOrderSamedayMigration extends Migration {
     $this->addFieldMapping('log')->defaultValue('Migrated from CSV Mq todays orders');
     $this->addFieldMapping('title','orc_id_drug');
 
+    $this->addFieldMapping('field_department')->defaultValue('Placed Today');
+
     $this->addFieldMapping('field_patient_ref','mrn')
       ->description('Handled in prepareRow() as it needs patient lookup.');
 
-//    $this->addFieldMapping('field_schedule_ref','mrn')
-//      ->description('Handled in prepareRow() as it needs patient lookup.');
+    $this->addFieldMapping('field_schedule_ref','sch')
+      ->description('Handled in prepareRow() as it needs patient lookup.');
+
     $this->addFieldMapping('field_start_date','start_date'); // @todo  prepare date
     $this->addFieldMapping('field_drug','order_description'); 
     $this->addFieldMapping('field_order_status','order_status');
@@ -74,12 +80,21 @@ class ContentOrderSamedayMigration extends Migration {
       'first_name',    // The patient frist name
       'last_name',    // The patient last name
       'middle_name',    // The patient's middle name
+      'notes',
+      'location',
+      'activity',
     ));
 
     $this->addUnmigratedDestinations(array(
        'field_start_date:timezone',          //	Timezone
        'field_start_date:rrule',             //	Recurring event rule
        'field_start_date:to',
+       'field_insurance_payer_:source_type',
+       'field_insurance_payer_:create_term',
+       'field_insurance_payer_:ignore_case',
+       'field_department:source_type',
+       'field_department:create_term',
+       'field_department:ignore_case', 
        'path',
        'created',
        'changed',
@@ -108,6 +123,10 @@ class ContentOrderSamedayMigration extends Migration {
     // Is there a pat MRN? 
     $mrnid = $this->getMrn($row);
     $row->mrn = $mrnid;
+
+    $schid = $this->getSch($row,$mrnid);
+    $row->sch = $schid;
+
   }
 
   public function getMrn($row) {
@@ -129,13 +148,49 @@ class ContentOrderSamedayMigration extends Migration {
         return($nid);
       }else{
        // make a new patient to-do
-        watchdog('schedule_migration', "no MRN match sameday: $row->mrn");
+        watchdog('schedule_migration', "no MRN match today: $row->mrn");
       } 
     }else{
         //there is no MRN, this is an orphan order
-        watchdog('schedule_migration', "orphan same day order: $row->create_date, $row->drug");
+        watchdog('schedule_migration', "orphan today order: $row->create_date, $row->drug");
     }
     return $nid;
+  }
+
+  public function getSch($row,$mrnid) {
+    // query database here, match with $row element, 
+    // return nid for this person, otherwise false.
+    $field_values = array();
+
+    // Search for an already migrated person entity with the same title
+    // (title is "givenName" "surName")
+
+    if (!empty($row->start_date)) {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'schedule');
+      $query->entityCondition('bundle', 'schedule');
+      $query->fieldCondition('field_patient_reference', 'value', $mrnid, '=');
+     // here-- need more conditions.
+//      $query->fieldCondition('field_app_date', 'value', $row->start_date, '=');
+      $query->fieldCondition('field_app_date', 'value', '2017-05-12', '>=');
+      $query->addTag('efq_debug');
+      dpm($query);
+//      dpm($query->arguments());
+
+      $results = $query->execute();
+      //dpm($results);
+      if (!empty($results['schedule'])) {
+        $sid = reset($results['schedule'])->id;
+        return($sid);
+      }else{
+       // make a new patient to-do
+        watchdog('schedule_migration', "no date match today: $row->start_date ");
+      } 
+    }else{
+        //there is no MRN, this is an orphan order
+        watchdog('schedule_migration', "orphan today order: $row->start_date");
+    }
+    return $sid;
   }
 
 }
