@@ -9,5 +9,6 @@ features[views_view][] = administrative_patient_list
 features[views_view][] = delete_orders
 features[views_view][] = delete_patients
 features[views_view][] = delete_schedule_items_entity_
+features[views_view][] = delete_schedules
 features[views_view][] = search_patient
 features_exclude[dependencies][ctools] = ctools
