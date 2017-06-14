@@ -41,6 +41,9 @@ function schedule_migration_migrate_api() {
       'EntityMedOncSchedule' => array(
         'class_name' => 'EntityScheduleMedOncMigration',
       ),
+      'EntityRadOncSchedule' => array(
+        'class_name' => 'EntityScheduleRadOncMigration',
+      ),
       'EntityChemoSchedule' => array(
         'class_name' => 'EntityScheduleChemoMigration',
       ),

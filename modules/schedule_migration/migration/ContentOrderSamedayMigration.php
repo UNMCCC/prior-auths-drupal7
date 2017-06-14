@@ -68,7 +68,8 @@ class ContentOrderSamedayMigration extends Migration {
       ->description('Handled in prepareRow() as it needs patient lookup.');
 
     $this->addFieldMapping('field_schedule_ref','sch')
-      ->description('Handled in prepareRow() as it needs patient lookup.');
+      ->sourceMigration('EntityScheduleChemoSameday');
+//      ->description('Handled in prepareRow() as it needs patient lookup.');
 
     $this->addFieldMapping('field_start_date','start_date'); // @todo  prepare date
     $this->addFieldMapping('field_drug','order_description'); 
@@ -166,13 +167,15 @@ class ContentOrderSamedayMigration extends Migration {
     // (title is "givenName" "surName")
 
     if (!empty($row->start_date)) {
+      $start_date = $row->start_date;
+      $start_date = date("Y-m-d", strtotime($start_date)); 
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'schedule');
       $query->entityCondition('bundle', 'schedule');
-      $query->fieldCondition('field_patient_reference', 'value', $mrnid, '=');
+      $query->fieldCondition('field_patient_reference', 'target_id', $mrnid, '=');
      // here-- need more conditions.
-//      $query->fieldCondition('field_app_date', 'value', $row->start_date, '=');
-      $query->fieldCondition('field_app_date', 'value', '2017-05-12', '>=');
+      $query->fieldCondition('field_app_date', 'value', $start_date, '=');
+//      $query->fieldCondition('field_app_date', 'value', '2017-05-12', '>=');
       $query->addTag('efq_debug');
       dpm($query);
 //      dpm($query->arguments());

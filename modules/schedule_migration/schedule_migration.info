@@ -13,6 +13,7 @@ files[] = migration/ContentPatientMigration.php
 files[] = migration/EntityScheduleChemoMigration.php
 files[] = migration/EntityScheduleMedicareMigration.php
 files[] = migration/EntityScheduleMedOncMigration.php
+files[] = migration/EntityScheduleRadOncMigration.php
 files[] = migration/EntityScheduleChemoSamedayMigration.php
 files[] = migration/TaxonomyInsuranceMigration.php
 files[] = migration/TaxonomyActivityMedOncMigration.php
