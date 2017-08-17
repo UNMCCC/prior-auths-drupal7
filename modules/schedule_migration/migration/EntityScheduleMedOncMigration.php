@@ -24,7 +24,7 @@ class EntityScheduleMedOncMigration extends Migration {
       8 => array('notes', 'Relevant notes'),
     );
 
-    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/MOandRO_Schedule.csv';
+    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/MO_Schedule.csv';
 
     $this->source = new MigrateSourceCSV($csv_file, $columns, $options);
     $this->body = t('CSV Chemo Add On Schedule');
