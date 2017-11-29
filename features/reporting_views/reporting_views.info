@@ -1,0 +1,11 @@
+name = Reporting Views
+core = 7.x
+package = Prior Auths
+dependencies[] = editableviews
+dependencies[] = views
+dependencies[] = views_data_export
+dependencies[] = views_json
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = schedules_for_aggregate_reporting
+features_exclude[dependencies][ctools] = ctools
