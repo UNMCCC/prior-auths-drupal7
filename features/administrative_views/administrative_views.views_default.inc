@@ -96,7 +96,7 @@ function administrative_views_views_default_views() {
   );
   /* Field: Bulk operations: Schedule */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_schedule';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -120,7 +120,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
   $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
   $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
-  /* Field: Schedule: App Date */
+  /* Field: Schedule: Appointment Date */
   $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
@@ -174,7 +174,11 @@ function administrative_views_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Administrative Patient List';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -183,7 +187,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -268,7 +272,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -301,7 +305,12 @@ function administrative_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'delete-orders';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+  );
+  $handler->display->display_options['path'] = 'admin/delete-orders';
   $export['delete_orders'] = $view;
 
   $view = new view();
@@ -322,7 +331,11 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '300';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
@@ -334,7 +347,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -367,7 +380,12 @@ function administrative_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'delete-patients';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+  );
+  $handler->display->display_options['path'] = 'admin/delete-patients';
   $export['delete_patients'] = $view;
 
   $view = new view();
@@ -391,7 +409,11 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Schedule: Id */
@@ -400,7 +422,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['id']['field'] = 'id';
   /* Field: Bulk operations: Schedule */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_schedule';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -426,7 +448,7 @@ function administrative_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'delete-schedule-items-entity-';
+  $handler->display->display_options['path'] = 'admin/delete-schedule-items-entity-';
   $export['delete_schedule_items_entity_'] = $view;
 
   $view = new view();
@@ -446,12 +468,15 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
-    2 => '2',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '300';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'views_bulk_operations_1' => 'views_bulk_operations_1',
@@ -515,7 +540,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['relationships']['field_patient_reference_target_id']['field'] = 'field_patient_reference_target_id';
   /* Field: Bulk operations: Schedule */
   $handler->display->display_options['fields']['views_bulk_operations_1']['id'] = 'views_bulk_operations_1';
-  $handler->display->display_options['fields']['views_bulk_operations_1']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['table'] = 'views_entity_schedule';
   $handler->display->display_options['fields']['views_bulk_operations_1']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -531,7 +556,7 @@ function administrative_views_views_default_views() {
       'label' => '',
     ),
   );
-  /* Field: Schedule: App Date */
+  /* Field: Schedule: Appointment Date */
   $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
@@ -587,12 +612,79 @@ function administrative_views_views_default_views() {
   $handler = $view->new_display('page', 'all sch', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Delete Schedules';
-  $handler->display->display_options['path'] = 'delete-schedules';
+  $handler->display->display_options['path'] = 'admin/delete-schedules';
 
-  /* Display: mo and ro */
-  $handler = $view->new_display('page', 'mo and ro', 'page_1');
+  /* Display: mo */
+  $handler = $view->new_display('page', 'mo', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Delete MO and RO Schedules';
+  $handler->display->display_options['title'] = 'Delete MO Schedules';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Bulk operations: Schedule */
+  $handler->display->display_options['fields']['views_bulk_operations_1']['id'] = 'views_bulk_operations_1';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['table'] = 'views_entity_schedule';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['entity_load_capacity'] = '100';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_operations'] = array(
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 1,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Name */
+  $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['table'] = 'field_data_field_name';
+  $handler->display->display_options['fields']['field_name']['field'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['relationship'] = 'field_patient_reference_target_id';
+  $handler->display->display_options['fields']['field_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'default',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: Schedule: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Schedule: PA Status */
+  $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Owner (INS VER)';
+  /* Field: Schedule: Id */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -602,24 +694,19 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (field_department) */
+  /* Filter criterion: Field: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['value'] = array(
-    0 => '482',
+    0 => '704',
   );
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  $handler->display->display_options['path'] = 'delete-mo-and-ro-schedules';
+  $handler->display->display_options['path'] = 'admin/delete-mo-schedules';
 
   /* Display: medicare */
   $handler = $view->new_display('page', 'medicare', 'page_2');
@@ -634,15 +721,203 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (field_department) */
+  /* Filter criterion: Field: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['value'] = array(
-    0 => '483',
+    0 => '703',
   );
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  $handler->display->display_options['path'] = 'admin/delete-medicare-schedules';
+
+  /* Display: ro */
+  $handler = $view->new_display('page', 'ro', 'page_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Delete RO Schedules';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Bulk operations: Schedule */
+  $handler->display->display_options['fields']['views_bulk_operations_1']['id'] = 'views_bulk_operations_1';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['table'] = 'views_entity_schedule';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['entity_load_capacity'] = '100';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_operations'] = array(
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 1,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Name */
+  $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['table'] = 'field_data_field_name';
+  $handler->display->display_options['fields']['field_name']['field'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['relationship'] = 'field_patient_reference_target_id';
+  $handler->display->display_options['fields']['field_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'default',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: Schedule: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Schedule: PA Status */
+  $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Owner (INS VER)';
+  /* Field: Schedule: Id */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '706',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  $handler->display->display_options['path'] = 'admin/delete-ro-schedules';
+
+  /* Display: chemo */
+  $handler = $view->new_display('page', 'chemo', 'page_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Delete Chemo Schedules';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Bulk operations: Schedule */
+  $handler->display->display_options['fields']['views_bulk_operations_1']['id'] = 'views_bulk_operations_1';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['table'] = 'views_entity_schedule';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_settings']['entity_load_capacity'] = '100';
+  $handler->display->display_options['fields']['views_bulk_operations_1']['vbo_operations'] = array(
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 1,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Name */
+  $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['table'] = 'field_data_field_name';
+  $handler->display->display_options['fields']['field_name']['field'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['relationship'] = 'field_patient_reference_target_id';
+  $handler->display->display_options['fields']['field_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'default',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: Schedule: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Schedule: PA Status */
+  $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Owner (INS VER)';
+  /* Field: Schedule: Id */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '702',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['expose']['remember_roles'] = array(
@@ -651,7 +926,7 @@ function administrative_views_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  $handler->display->display_options['path'] = 'delete-medicare-schedules';
+  $handler->display->display_options['path'] = 'admin/delete-chemo-schedules';
   $export['delete_schedules'] = $view;
 
   $view = new view();
@@ -668,12 +943,20 @@ function administrative_views_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Search Patient';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -702,17 +985,17 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'patient' => 'patient',
   );
-  /* Filter criterion: Name Components: Family */
-  $handler->display->display_options['filters']['field_name_family']['id'] = 'field_name_family';
-  $handler->display->display_options['filters']['field_name_family']['table'] = 'field_data_field_name';
-  $handler->display->display_options['filters']['field_name_family']['field'] = 'field_name_family';
-  $handler->display->display_options['filters']['field_name_family']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_name_family']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_name_family']['expose']['operator_id'] = 'field_name_family_op';
-  $handler->display->display_options['filters']['field_name_family']['expose']['label'] = 'Search By Last Name';
-  $handler->display->display_options['filters']['field_name_family']['expose']['operator'] = 'field_name_family_op';
-  $handler->display->display_options['filters']['field_name_family']['expose']['identifier'] = 'field_name_family';
-  $handler->display->display_options['filters']['field_name_family']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Last Name (field_last_name) */
+  $handler->display->display_options['filters']['field_last_name_value']['id'] = 'field_last_name_value';
+  $handler->display->display_options['filters']['field_last_name_value']['table'] = 'field_data_field_last_name';
+  $handler->display->display_options['filters']['field_last_name_value']['field'] = 'field_last_name_value';
+  $handler->display->display_options['filters']['field_last_name_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_last_name_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['operator_id'] = 'field_last_name_value_op';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['label'] = 'Search By Last Name';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['operator'] = 'field_last_name_value_op';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['identifier'] = 'field_last_name_value';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -720,6 +1003,54 @@ function administrative_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'patient' => 'patient',
+  );
+  /* Filter criterion: Content: Last Name (field_last_name) */
+  $handler->display->display_options['filters']['field_last_name_value']['id'] = 'field_last_name_value';
+  $handler->display->display_options['filters']['field_last_name_value']['table'] = 'field_data_field_last_name';
+  $handler->display->display_options['filters']['field_last_name_value']['field'] = 'field_last_name_value';
+  $handler->display->display_options['filters']['field_last_name_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_last_name_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['operator_id'] = 'field_last_name_value_op';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['label'] = 'Search By Last Name';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['operator'] = 'field_last_name_value_op';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['identifier'] = 'field_last_name_value';
+  $handler->display->display_options['filters']['field_last_name_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: Content: mq_pat_id (field_mq_pat_id) */
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['id'] = 'field_mq_pat_id_value';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['table'] = 'field_data_field_mq_pat_id';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['field'] = 'field_mq_pat_id_value';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['operator_id'] = 'field_mq_pat_id_value_op';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['label'] = 'Pat ID ';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['operator'] = 'field_mq_pat_id_value_op';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['identifier'] = 'field_mq_pat_id_value';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+  );
   $handler->display->display_options['path'] = 'search-patient';
   $export['search_patient'] = $view;
 
