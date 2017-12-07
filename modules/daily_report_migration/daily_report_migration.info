@@ -1,0 +1,8 @@
+name = Daily Report Migration
+description = "Provides a migration from the PA daily reporting summaries."
+core = 7.x
+dependencies[] = migrate
+dependencies[] = migrate_ui
+dependencies[] = migrate_extras
+; Migration classes
+files[] = migration/EntityDailyReportMigration.php
