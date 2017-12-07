@@ -89,15 +89,6 @@ function reporting_views_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Header: Global: Result summary */
-  $handler->display->display_options['header']['result']['id'] = 'result';
-  $handler->display->display_options['header']['result']['table'] = 'views';
-  $handler->display->display_options['header']['result']['field'] = 'result';
-  $handler->display->display_options['header']['result']['label'] = 'Summary stats:';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['relationships']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['relationships']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
   /* Field: Schedule: Appointment Date */
   $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
@@ -111,15 +102,6 @@ function reporting_views_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
     'show_remaining_days' => 0,
-  );
-  /* Field: Content: MRN */
-  $handler->display->display_options['fields']['field_mrn']['id'] = 'field_mrn';
-  $handler->display->display_options['fields']['field_mrn']['table'] = 'field_data_field_mrn';
-  $handler->display->display_options['fields']['field_mrn']['field'] = 'field_mrn';
-  $handler->display->display_options['fields']['field_mrn']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mrn']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 0,
   );
   /* Field: Schedule: Patient */
   $handler->display->display_options['fields']['field_patient_reference']['id'] = 'field_patient_reference';
@@ -144,7 +126,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -235,7 +217,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -339,7 +321,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -446,7 +428,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -543,7 +525,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -643,7 +625,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -748,7 +730,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -851,7 +833,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -956,7 +938,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -1061,7 +1043,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -1174,7 +1156,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -1287,7 +1269,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -1400,7 +1382,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -1443,6 +1425,412 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
   $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
   $handler->display->display_options['path'] = 'chemo-processed-day-json';
+
+  /* Display: MO-D-JSON */
+  $handler = $view->new_display('page', 'MO-D-JSON', 'page_18');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'JSON feed MedOnc Denied today ';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    2 => '2',
+  );
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: mq_pat_id */
+  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Schedule: PatIDRef */
+  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '704',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'medonc-denied-day-json';
+
+  /* Display: RO-D-JSON */
+  $handler = $view->new_display('page', 'RO-D-JSON', 'page_19');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'JSON feed RadOnc Denied today ';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    2 => '2',
+  );
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: mq_pat_id */
+  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Schedule: PatIDRef */
+  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '706',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'radonc-denied-day-json';
+
+  /* Display: MDC-D-JSON */
+  $handler = $view->new_display('page', 'MDC-D-JSON', 'page_20');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'JSON feed Medicare Denied today ';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    2 => '2',
+  );
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: mq_pat_id */
+  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Schedule: PatIDRef */
+  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '703',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'medicare-denied-day-json';
+
+  /* Display: CH-D-JSON */
+  $handler = $view->new_display('page', 'CH-D-JSON', 'page_21');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'JSON feed chemo Denied today ';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    2 => '2',
+  );
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
+  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: mq_pat_id */
+  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Schedule: PatIDRef */
+  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '702',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
+  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'chemo-denied-day-json';
 
   /* Display: medicare done */
   $handler = $view->new_display('page', 'medicare done', 'page_5');
@@ -1643,7 +2031,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -1874,7 +2262,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -2102,7 +2490,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -2336,7 +2724,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -2429,7 +2817,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -2502,414 +2890,8 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_insurance_payer__tid']['vocabulary'] = 'insurance';
   $handler->display->display_options['path'] = 'radonc-schedule-audit';
 
-  /* Display: MO-D-JSON */
-  $handler = $view->new_display('page', 'MO-D-JSON', 'page_18');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'JSON feed MedOnc Denied today ';
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-    2 => '2',
-  );
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_json';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
-  $handler->display->display_options['style_options']['remove_newlines'] = 0;
-  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
-  $handler->display->display_options['style_options']['object_arrays'] = 0;
-  $handler->display->display_options['style_options']['numeric_strings'] = 0;
-  $handler->display->display_options['style_options']['bigint_string'] = 0;
-  $handler->display->display_options['style_options']['pretty_print'] = 0;
-  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
-  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
-  $handler->display->display_options['style_options']['char_encoding'] = array();
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Schedule: Appointment Date */
-  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
-  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
-    'format_type' => 'year_month_day',
-    'custom_date_format' => '',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-  );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Schedule: PatIDRef */
-  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
-  /* Field: Schedule: Changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
-  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Schedule: schedule type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'schedule' => 'schedule',
-  );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
-  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
-  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
-    0 => '704',
-  );
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
-  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
-  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
-    'Denied' => 'Denied',
-  );
-  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
-  /* Filter criterion: Schedule: Changed */
-  $handler->display->display_options['filters']['changed']['id'] = 'changed';
-  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['changed']['field'] = 'changed';
-  $handler->display->display_options['filters']['changed']['operator'] = '>=';
-  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
-  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'medonc-denied-day-json';
-
-  /* Display: RO-D-JSON */
-  $handler = $view->new_display('page', 'RO-D-JSON', 'page_19');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'JSON feed RadOnc Denied today ';
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-    2 => '2',
-  );
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_json';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
-  $handler->display->display_options['style_options']['remove_newlines'] = 0;
-  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
-  $handler->display->display_options['style_options']['object_arrays'] = 0;
-  $handler->display->display_options['style_options']['numeric_strings'] = 0;
-  $handler->display->display_options['style_options']['bigint_string'] = 0;
-  $handler->display->display_options['style_options']['pretty_print'] = 0;
-  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
-  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
-  $handler->display->display_options['style_options']['char_encoding'] = array();
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Schedule: Appointment Date */
-  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
-  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
-    'format_type' => 'year_month_day',
-    'custom_date_format' => '',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-  );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Schedule: PatIDRef */
-  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
-  /* Field: Schedule: Changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
-  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Schedule: schedule type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'schedule' => 'schedule',
-  );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
-  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
-  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
-    0 => '706',
-  );
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
-  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
-  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
-    'Denied' => 'Denied',
-  );
-  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
-  /* Filter criterion: Schedule: Changed */
-  $handler->display->display_options['filters']['changed']['id'] = 'changed';
-  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['changed']['field'] = 'changed';
-  $handler->display->display_options['filters']['changed']['operator'] = '>=';
-  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
-  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'radonc-denied-day-json';
-
-  /* Display: MDC-D-JSON */
-  $handler = $view->new_display('page', 'MDC-D-JSON', 'page_20');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'JSON feed Medicare Denied today ';
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-    2 => '2',
-  );
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_json';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
-  $handler->display->display_options['style_options']['remove_newlines'] = 0;
-  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
-  $handler->display->display_options['style_options']['object_arrays'] = 0;
-  $handler->display->display_options['style_options']['numeric_strings'] = 0;
-  $handler->display->display_options['style_options']['bigint_string'] = 0;
-  $handler->display->display_options['style_options']['pretty_print'] = 0;
-  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
-  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
-  $handler->display->display_options['style_options']['char_encoding'] = array();
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Schedule: Appointment Date */
-  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
-  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
-    'format_type' => 'year_month_day',
-    'custom_date_format' => '',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-  );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Schedule: PatIDRef */
-  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
-  /* Field: Schedule: Changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Schedule: schedule type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'schedule' => 'schedule',
-  );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
-  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
-  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
-    0 => '703',
-  );
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
-  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
-  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
-    'Denied' => 'Denied',
-  );
-  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
-  /* Filter criterion: Schedule: Changed */
-  $handler->display->display_options['filters']['changed']['id'] = 'changed';
-  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['changed']['field'] = 'changed';
-  $handler->display->display_options['filters']['changed']['operator'] = '>=';
-  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
-  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'medicare-denied-day-json';
-
-  /* Display: CH-D-JSON */
-  $handler = $view->new_display('page', 'CH-D-JSON', 'page_21');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'JSON feed chemo Denied today ';
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-    2 => '2',
-  );
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_json';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
-  $handler->display->display_options['style_options']['remove_newlines'] = 0;
-  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
-  $handler->display->display_options['style_options']['object_arrays'] = 0;
-  $handler->display->display_options['style_options']['numeric_strings'] = 0;
-  $handler->display->display_options['style_options']['bigint_string'] = 0;
-  $handler->display->display_options['style_options']['pretty_print'] = 0;
-  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
-  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
-  $handler->display->display_options['style_options']['char_encoding'] = array();
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Schedule: Appointment Date */
-  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Appointment  Date';
-  $handler->display->display_options['fields']['field_app_date']['settings'] = array(
-    'format_type' => 'year_month_day',
-    'custom_date_format' => '',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-  );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Schedule: PatIDRef */
-  $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['fields']['field_patient_reference1']['field'] = 'field_patient_reference1';
-  /* Field: Schedule: Changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
-  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Schedule: schedule type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'schedule' => 'schedule',
-  );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
-  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
-  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
-    0 => '702',
-  );
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
-  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
-  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
-  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
-  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
-  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
-    'Denied' => 'Denied',
-  );
-  /* Filter criterion: Schedule: PatIDRef (field_patient_reference1) */
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['id'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['table'] = 'field_data_field_patient_reference1';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['field'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['filters']['field_patient_reference1_target_id']['operator'] = 'not empty';
-  /* Filter criterion: Schedule: Changed */
-  $handler->display->display_options['filters']['changed']['id'] = 'changed';
-  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['changed']['field'] = 'changed';
-  $handler->display->display_options['filters']['changed']['operator'] = '>=';
-  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
-  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'chemo-denied-day-json';
-
   /* Display: MO-T-CSV */
-  $handler = $view->new_display('views_data_export', 'MO-T-CSV', 'views_data_export_1');
+  $handler = $view->new_display('views_data_export', 'MO-T-CSV', 'mo_t');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Medonc Total last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -2938,15 +2920,6 @@ function reporting_views_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Field: Schedule: PatIDRef */
   $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
   $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
@@ -2955,10 +2928,12 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
-  $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
-  $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
-  $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -2968,7 +2943,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -2991,9 +2966,9 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: RO-T-CSV */
-  $handler = $view->new_display('views_data_export', 'RO-T-CSV', 'views_data_export_2');
+  $handler = $view->new_display('views_data_export', 'RO-T-CSV', 'ro_t');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'ro total since last day CSV';
+  $handler->display->display_options['title'] = 'Radonc total since last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
@@ -3041,6 +3016,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3050,7 +3031,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3062,18 +3043,18 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'radonc-total-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'radonc-total-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: MDC-T-CSV */
-  $handler = $view->new_display('views_data_export', 'MDC-T-CSV', 'views_data_export_3');
+  $handler = $view->new_display('views_data_export', 'MDC-T-CSV', 'mdc_t');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'medicare total since last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3123,6 +3104,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3132,7 +3119,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3144,18 +3131,18 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'medicare-total-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'medicare-total-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: CH-T-CSV */
-  $handler = $view->new_display('views_data_export', 'CH-T-CSV', 'views_data_export_4');
+  $handler = $view->new_display('views_data_export', 'CH-T-CSV', 'ch_t');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'chemo total since last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3169,6 +3156,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Schedule: Appointment Date */
   $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
@@ -3205,6 +3193,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3214,7 +3208,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3226,18 +3220,18 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'chemo-total-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'chemo-total-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: MO-C-CSV */
-  $handler = $view->new_display('views_data_export', 'MO-C-CSV', 'views_data_export_5');
+  $handler = $view->new_display('views_data_export', 'MO-C-CSV', 'mo_c');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Medonc Complete last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3287,6 +3281,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3296,7 +3296,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3308,13 +3308,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -3325,11 +3318,18 @@ function reporting_views_views_default_views() {
     'Denied' => 'Denied',
     'No PA Needed' => 'No PA Needed',
   );
-  $handler->display->display_options['path'] = 'medonc-complete-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'medonc-complete-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: RO-C-CSV */
-  $handler = $view->new_display('views_data_export', 'RO-C-CSV', 'views_data_export_6');
+  $handler = $view->new_display('views_data_export', 'RO-C-CSV', 'ro_c');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Radonc Complete last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3343,6 +3343,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Schedule: Appointment Date */
   $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
@@ -3379,6 +3380,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3388,7 +3395,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3400,13 +3407,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -3417,11 +3417,18 @@ function reporting_views_views_default_views() {
     'Denied' => 'Denied',
     'No PA Needed' => 'No PA Needed',
   );
-  $handler->display->display_options['path'] = 'radonc-complete-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'radonc-complete-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: MDC-C-CSV */
-  $handler = $view->new_display('views_data_export', 'MDC-C-CSV', 'views_data_export_7');
+  $handler = $view->new_display('views_data_export', 'MDC-C-CSV', 'mdc_c');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Medicare Complete last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3435,6 +3442,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Schedule: Appointment Date */
   $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
@@ -3471,6 +3479,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3480,7 +3494,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3492,13 +3506,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -3509,11 +3516,18 @@ function reporting_views_views_default_views() {
     'Denied' => 'Denied',
     'No PA Needed' => 'No PA Needed',
   );
-  $handler->display->display_options['path'] = 'medicare-complete-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'medicare-complete-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: CH-C-CSV */
-  $handler = $view->new_display('views_data_export', 'CH-C-CSV', 'views_data_export_8');
+  $handler = $view->new_display('views_data_export', 'CH-C-CSV', 'ch_c');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Chemo Complete last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3527,6 +3541,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Schedule: Appointment Date */
   $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
@@ -3542,15 +3557,6 @@ function reporting_views_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Field: Schedule: PatIDRef */
   $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
   $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
@@ -3563,6 +3569,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3572,7 +3584,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3584,13 +3596,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -3601,11 +3606,18 @@ function reporting_views_views_default_views() {
     'Denied' => 'Denied',
     'No PA Needed' => 'No PA Needed',
   );
-  $handler->display->display_options['path'] = 'chemo-complete-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'chemo-complete-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: MO-P-CSV */
-  $handler = $view->new_display('views_data_export', 'MO-P-CSV', 'views_data_export_9');
+  $handler = $view->new_display('views_data_export', 'MO-P-CSV', 'mo_proc');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Medonc Processing last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3634,15 +3646,6 @@ function reporting_views_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Field: Schedule: PatIDRef */
   $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
   $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
@@ -3655,6 +3658,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3664,7 +3673,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3676,13 +3685,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -3701,11 +3703,18 @@ function reporting_views_views_default_views() {
     'No PA Needed' => 'No PA Needed',
     'Pending' => 'Pending',
   );
-  $handler->display->display_options['path'] = 'medonc-processed-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'medonc-processed-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: RO-P-CSV */
-  $handler = $view->new_display('views_data_export', 'RO-P-CSV', 'views_data_export_10');
+  $handler = $view->new_display('views_data_export', 'RO-P-CSV', 'ro_proc');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Radonc Processed last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3755,6 +3764,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3764,7 +3779,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3776,13 +3791,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -3801,11 +3809,18 @@ function reporting_views_views_default_views() {
     'No PA Needed' => 'No PA Needed',
     'Pending' => 'Pending',
   );
-  $handler->display->display_options['path'] = 'radonc-processed-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'radonc-processed-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: MDC-P-CSV */
-  $handler = $view->new_display('views_data_export', 'MDC-P-CSV', 'views_data_export_12');
+  $handler = $view->new_display('views_data_export', 'MDC-P-CSV', 'mdc_proc');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Medicare processed last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3855,6 +3870,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3864,7 +3885,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3876,13 +3897,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -3901,11 +3915,18 @@ function reporting_views_views_default_views() {
     'No PA Needed' => 'No PA Needed',
     'Pending' => 'Pending',
   );
-  $handler->display->display_options['path'] = 'medicare-processed-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'medicare-processed-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: CH-P-CSV */
-  $handler = $view->new_display('views_data_export', 'CH-P-CSV', 'views_data_export_13');
+  $handler = $view->new_display('views_data_export', 'CH-P-CSV', 'ch_proc');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Chemo processed last day CSV';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -3934,15 +3955,6 @@ function reporting_views_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Field: Schedule: PatIDRef */
   $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
   $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
@@ -3955,6 +3967,12 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Schedule: schedule type */
@@ -3964,7 +3982,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'schedule' => 'schedule',
   );
-  /* Filter criterion: Field: Department (Specialty) (field_department) */
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
   $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
   $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
@@ -3976,13 +3994,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: Created */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   /* Filter criterion: Schedule: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
@@ -4001,7 +4012,914 @@ function reporting_views_views_default_views() {
     'No PA Needed' => 'No PA Needed',
     'Pending' => 'Pending',
   );
-  $handler->display->display_options['path'] = 'chemo-processed-day-csv';
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'chemo-processed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggCH-P-CSV */
+  $handler = $view->new_display('views_data_export', 'aggCH-P-CSV', 'agg_ch_proc');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo processed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '702',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appealed' => 'Appealed',
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+    'Dictation Needed' => 'Dictation Needed',
+    'Ins. Form Needed' => 'Ins. Form Needed',
+    'Medical Necessity' => 'Medical Necessity',
+    'No Orders' => 'No Orders',
+    'No PA Needed' => 'No PA Needed',
+    'Pending' => 'Pending',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-chemo-processed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggMO-P-CSV */
+  $handler = $view->new_display('views_data_export', 'aggMO-P-CSV', 'agg_mo_proc');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc processed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '704',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appealed' => 'Appealed',
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+    'Dictation Needed' => 'Dictation Needed',
+    'Ins. Form Needed' => 'Ins. Form Needed',
+    'Medical Necessity' => 'Medical Necessity',
+    'No Orders' => 'No Orders',
+    'No PA Needed' => 'No PA Needed',
+    'Pending' => 'Pending',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-medonc-processed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggRO-P-CSV */
+  $handler = $view->new_display('views_data_export', 'aggRO-P-CSV', 'agg_ro_proc');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Radonc processed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '706',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appealed' => 'Appealed',
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+    'Dictation Needed' => 'Dictation Needed',
+    'Ins. Form Needed' => 'Ins. Form Needed',
+    'Medical Necessity' => 'Medical Necessity',
+    'No Orders' => 'No Orders',
+    'No PA Needed' => 'No PA Needed',
+    'Pending' => 'Pending',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-radonc-processed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggMDC-P-CSV */
+  $handler = $view->new_display('views_data_export', 'aggMDC-P-CSV', 'agg_mdc_proc');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare processed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '703',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appealed' => 'Appealed',
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+    'Dictation Needed' => 'Dictation Needed',
+    'Ins. Form Needed' => 'Ins. Form Needed',
+    'Medical Necessity' => 'Medical Necessity',
+    'No Orders' => 'No Orders',
+    'No PA Needed' => 'No PA Needed',
+    'Pending' => 'Pending',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-medicare-processed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggMO-C-CSV */
+  $handler = $view->new_display('views_data_export', 'aggMO-C-CSV', 'agg_mo_c');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc completed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '704',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-medonc-completed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggRO-C-CSV */
+  $handler = $view->new_display('views_data_export', 'aggRO-C-CSV', 'agg_ro_c');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Radonc completed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '706',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-radonc-completed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggMDC-C-CSV */
+  $handler = $view->new_display('views_data_export', 'aggMDC-C-CSV', 'agg_mdc_c');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare completed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '703',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-medicare-completed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggCH-C-CSV */
+  $handler = $view->new_display('views_data_export', 'aggCH-C-CSV', 'agg_ch_c');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo completed last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '702',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
+  $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
+  $handler->display->display_options['filters']['field_pa_status_value']['value'] = array(
+    'Appeal Won' => 'Appeal Won',
+    'Appeal Lost' => 'Appeal Lost',
+    'Authorized' => 'Authorized',
+    'Completed' => 'Completed',
+    'Denied' => 'Denied',
+  );
+  /* Filter criterion: Schedule: Changed */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '>=';
+  $handler->display->display_options['filters']['changed']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['changed']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-chemo-completed-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggCH-T-CSV */
+  $handler = $view->new_display('views_data_export', 'aggCH-T-CSV', 'agg_ch_t');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo total added last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['label'] = 'Added';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '702',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: Created */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-chemo-added-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggMO-T-CSV */
+  $handler = $view->new_display('views_data_export', 'aggMO-T-CSV', 'agg_mo_t');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc total added last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['label'] = 'Added';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '704',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: Created */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-mo-added-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: aggRO-T-CSV */
+  $handler = $view->new_display('views_data_export', 'aggRO-T-CSV', 'agg_ro_t');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Radonc total added last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['label'] = 'Added';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '706',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: Created */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-ro-added-day.csv';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: agMDC-T-CSV */
+  $handler = $view->new_display('views_data_export', 'agMDC-T-CSV', 'agg_mdc_t');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare total added last day CSV';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Schedule: Appointment Date */
+  $handler->display->display_options['fields']['field_app_date']['id'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
+  $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
+  /* Field: Schedule: Changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'eck_schedule';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['group_type'] = 'min';
+  $handler->display->display_options['fields']['changed']['label'] = 'Added';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Ymd';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Schedule: schedule type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'schedule' => 'schedule',
+  );
+  /* Filter criterion: Schedule: Department (Specialty) (field_department) */
+  $handler->display->display_options['filters']['field_department_tid']['id'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['table'] = 'field_data_field_department';
+  $handler->display->display_options['filters']['field_department_tid']['field'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['value'] = array(
+    0 => '703',
+  );
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator_id'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['label'] = 'Department (Specialty) (field_department)';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
+  $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
+  $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
+  /* Filter criterion: Schedule: Created */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'eck_schedule';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-12 Hours';
+  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
+  $handler->display->display_options['path'] = 'agg-mdc-added-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
   $export['schedules_for_aggregate_reporting'] = $view;
 
