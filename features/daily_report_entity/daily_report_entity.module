@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Daily Report Entity feature.
+ */
+
+include_once 'daily_report_entity.features.inc';

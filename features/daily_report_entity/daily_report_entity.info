@@ -1,0 +1,7 @@
+name = Daily Report Entity
+core = 7.x
+package = Prior Auths
+dependencies[] = eck
+dependencies[] = features
+features[eck_entity_type][] = daily_report
+features[features_api][] = api:2
