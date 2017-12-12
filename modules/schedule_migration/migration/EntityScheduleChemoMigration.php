@@ -15,13 +15,14 @@ class EntityScheduleChemoMigration extends Migration {
     $columns = array(
       0 => array('date', 'The scheduled date of appointment'),
       1 => array('mrn', 'The medical record number'),
-      2 => array('lastname', 'The patient last name'),
-      3 => array('firstname', 'The scanned first name'),
-      4 => array('middle', 'A Middle name'),
-      5 => array('location', 'The location where patient is scheduled to'),
-      6 => array('activity', 'The activity'),
-      7 => array('ins_provider', 'The insurance provider (ref)'),
-      8 => array('notes', 'Relevant notes'),
+      2 => array('pat_id1', 'Another cryptic unique number used for keys'),
+      3 => array('lastname', 'The patient last name'),
+      4 => array('firstname', 'The scanned first name'),
+      5 => array('middle', 'A Middle name'),
+      6 => array('location', 'The location where patient is scheduled to'),
+      7 => array('activity', 'The activity'),
+      8 => array('ins_provider', 'The insurance provider (ref)'),
+      9 => array('notes', 'Relevant notes'),
     );
 
     $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/Chemo_Schedule.csv';
@@ -32,7 +33,7 @@ class EntityScheduleChemoMigration extends Migration {
     $this->destination = new MigrateDestinationEntityAPI('schedule','schedule');
 
     // Tell Migrate the unique IDs for this migration live - watch for multiple appts.
-    $source_key_schema = array('mrn' => array(
+    $source_key_schema = array('pat_id1' => array(
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
@@ -47,9 +48,12 @@ class EntityScheduleChemoMigration extends Migration {
     $this->addFieldMapping('field_activity', 'activity');// need work, this is a term ref!!
     $this->addFieldMapping('field_insurance_payer_', 'ins_provider') 
       ->description('lookup insurance term in prepareRow'); // spin off term ref, or not?
-    $this->addFieldMapping('field_patient_reference', 'mrn')
-      ->description('lookup existing mrns, or create one in prepareRow');
+    $this->addFieldMapping('field_patient_reference1', 'pat_id1')
+      ->description('lookup existing pat_id1s, or create one in prepareRow');
     $this->addFieldMapping('field_notes', 'notes');
+
+    // send these schedules to whoever owns the chemo schedules.  Change the UID!
+    $this->addFieldMapping('uid')->defaultValue('298');
 
     $this->addUnmigratedSources(array(
       'lastname',
@@ -89,24 +93,25 @@ class EntityScheduleChemoMigration extends Migration {
       $row->date = $row->date . ' 12:00:00 PM';
     }
 
-    // Is there a pat MRN?
-    $mrnid = $this->getMrn($row);
-    $row->mrn = $mrnid;
+    // Is there a pat Id1?
+    $pat_id1 = $this->getPatientId($row);
+    $row->pat_id1 = $pat_id1;
+
   }
 
-  public function getMrn($row) {
+  public function getPatientId($row) {
     // query database here, match with $row element,
     // return nid for this person, otherwise false.
-    $field_values = array();
+    //$field_values = array();
 
     // Search for an already migrated person entity with the same title
     // (title is "givenName" "surName")
 
-    if (!empty($row->mrn)) {
+    if (!empty($row->pat_id1)) {
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'node');
       $query->entityCondition('bundle', 'patient');
-      $query->fieldCondition('field_mrn', 'value', (int)$row->mrn, '=');
+      $query->fieldCondition('field_mq_pat_id', 'value', (int)$row->pat_id1, '=');
       $results = $query->execute();
       if (!empty($results['node'])) {
         $nid = reset($results['node'])->nid;
@@ -118,9 +123,9 @@ class EntityScheduleChemoMigration extends Migration {
       }
     }else{
         //there is no MRN, this is an orphan order
-        watchdog('schedule_migration', "orphan schedule : $row->last_name, $row->start_date");
+        watchdog('schedule_migration', "orphan schedule : $row->lastname, $row->date");
     }
-    return $nid;
+    return;
   }
 
 
