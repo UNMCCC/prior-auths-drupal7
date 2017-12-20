@@ -11,6 +11,94 @@ function reporting_views_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'reports_splash_page';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Reports Splash Page';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Administrative Splash Page';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  $handler->display->display_options['row_options']['links'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'page' => 'page',
+  );
+  /* Filter criterion: Content: Nid */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['value']['value'] = '3';
+
+  /* Display: Report-Page */
+  $handler = $view->new_display('page', 'Report-Page', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Reports Splash Page';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'page' => 'page',
+  );
+  /* Filter criterion: Content: Nid */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['value']['value'] = '16546';
+  $handler->display->display_options['path'] = 'admin/reports';
+  $export['reports_splash_page'] = $view;
+
+  $view = new view();
   $view->name = 'schedules_for_aggregate_reporting';
   $view->description = '';
   $view->tag = 'default';
@@ -27,7 +115,6 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
-    2 => '2',
     5 => '5',
   );
   $handler->display->display_options['cache']['type'] = 'none';
@@ -115,7 +202,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_insurance_payer_']['table'] = 'field_data_field_insurance_payer_';
   $handler->display->display_options['fields']['field_insurance_payer_']['field'] = 'field_insurance_payer_';
   $handler->display->display_options['fields']['field_insurance_payer_']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -637,7 +724,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -742,7 +829,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -845,7 +932,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -950,7 +1037,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1055,7 +1142,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1168,7 +1255,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1281,7 +1368,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1394,7 +1481,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1507,7 +1594,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1609,7 +1696,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1709,7 +1796,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1811,7 +1898,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -1937,7 +2024,6 @@ function reporting_views_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['save_messages'] = 'none';
   $handler->display->display_options['style_options']['batch_size'] = '10';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -1956,15 +2042,6 @@ function reporting_views_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
     'show_remaining_days' => 0,
-  );
-  /* Field: Content: MRN */
-  $handler->display->display_options['fields']['field_mrn']['id'] = 'field_mrn';
-  $handler->display->display_options['fields']['field_mrn']['table'] = 'field_data_field_mrn';
-  $handler->display->display_options['fields']['field_mrn']['field'] = 'field_mrn';
-  $handler->display->display_options['fields']['field_mrn']['relationship'] = 'field_patient_reference_target_id';
-  $handler->display->display_options['fields']['field_mrn']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 0,
   );
   /* Field: Schedule: PatIDRef */
   $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
@@ -1994,13 +2071,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_notes']['id'] = 'field_notes';
   $handler->display->display_options['fields']['field_notes']['table'] = 'field_data_field_notes';
   $handler->display->display_options['fields']['field_notes']['field'] = 'field_notes';
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'Staff Name (INS VER)';
-  /* Field: Schedule: PA Status (editable) */
+  /* Field: Field: PA Status (editable) */
   $handler->display->display_options['fields']['field_pa_status_editable']['id'] = 'field_pa_status_editable';
   $handler->display->display_options['fields']['field_pa_status_editable']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status_editable']['field'] = 'field_pa_status_editable';
@@ -2043,7 +2114,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -2168,7 +2239,6 @@ function reporting_views_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['save_messages'] = 'none';
   $handler->display->display_options['style_options']['batch_size'] = '10';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -2231,7 +2301,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Staff Name (INS VER)';
-  /* Field: Schedule: PA Status (editable) */
+  /* Field: Field: PA Status (editable) */
   $handler->display->display_options['fields']['field_pa_status_editable']['id'] = 'field_pa_status_editable';
   $handler->display->display_options['fields']['field_pa_status_editable']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status_editable']['field'] = 'field_pa_status_editable';
@@ -2270,7 +2340,7 @@ function reporting_views_views_default_views() {
     0 => '702',
   );
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -2387,7 +2457,6 @@ function reporting_views_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['save_messages'] = 'none';
   $handler->display->display_options['style_options']['batch_size'] = '10';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -2459,7 +2528,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Staff Name (INS VER)';
-  /* Field: Schedule: PA Status (editable) */
+  /* Field: Field: PA Status (editable) */
   $handler->display->display_options['fields']['field_pa_status_editable']['id'] = 'field_pa_status_editable';
   $handler->display->display_options['fields']['field_pa_status_editable']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status_editable']['field'] = 'field_pa_status_editable';
@@ -2507,7 +2576,7 @@ function reporting_views_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -2630,7 +2699,6 @@ function reporting_views_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['save_messages'] = 'none';
   $handler->display->display_options['style_options']['batch_size'] = '10';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -2693,7 +2761,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Staff Name (INS VER)';
-  /* Field: Schedule: PA Status (editable) */
+  /* Field: Field: PA Status (editable) */
   $handler->display->display_options['fields']['field_pa_status_editable']['id'] = 'field_pa_status_editable';
   $handler->display->display_options['fields']['field_pa_status_editable']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status_editable']['field'] = 'field_pa_status_editable';
@@ -2736,7 +2804,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -2800,7 +2868,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Staff Name (INS VER)';
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -2829,7 +2897,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3012,7 +3080,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3100,7 +3168,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3189,7 +3257,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3277,7 +3345,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3308,7 +3376,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3376,7 +3444,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3407,7 +3475,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3475,7 +3543,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3506,7 +3574,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3565,7 +3633,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3596,7 +3664,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3654,7 +3722,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3685,7 +3753,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3760,7 +3828,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3791,7 +3859,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3866,7 +3934,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3897,7 +3965,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -3963,7 +4031,7 @@ function reporting_views_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Schedule: PA Status */
+  /* Field: Field: PA Status */
   $handler->display->display_options['fields']['field_pa_status']['id'] = 'field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['fields']['field_pa_status']['field'] = 'field_pa_status';
@@ -3994,7 +4062,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4077,7 +4145,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4160,7 +4228,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4243,7 +4311,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4326,7 +4394,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4409,7 +4477,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4485,7 +4553,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4561,7 +4629,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4637,7 +4705,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['filters']['field_department_tid']['expose']['operator'] = 'field_department_tid_op';
   $handler->display->display_options['filters']['field_department_tid']['expose']['identifier'] = 'field_department_tid';
   $handler->display->display_options['filters']['field_department_tid']['vocabulary'] = 'section';
-  /* Filter criterion: Schedule: PA Status (field_pa_status) */
+  /* Filter criterion: Field: PA Status (field_pa_status) */
   $handler->display->display_options['filters']['field_pa_status_value']['id'] = 'field_pa_status_value';
   $handler->display->display_options['filters']['field_pa_status_value']['table'] = 'field_data_field_pa_status';
   $handler->display->display_options['filters']['field_pa_status_value']['field'] = 'field_pa_status_value';
@@ -4922,6 +4990,3939 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['path'] = 'agg-mdc-added-day.csv';
   $handler->display->display_options['sitename_title'] = 0;
   $export['schedules_for_aggregate_reporting'] = $view;
+
+  $view = new view();
+  $view->name = 'stats_same_day_order';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Stats Same Day Order';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Total number of orders posted on the day of service';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'created' => 'created',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'year_month_day';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  $handler->display->display_options['fields']['created']['format_date_sql'] = 1;
+  /* Field: COUNT(Content: Title) */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['group_type'] = 'count';
+  $handler->display->display_options['fields']['title']['label'] = 'Total Same Day Orders';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'order' => 'order',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'The following table shows in each row, the total of numbers of orders created on the same day the patient is scheduled to receive service. This could be problematic for orders that require authorization, as it is often virtually impossible to request and receive authorization in a matter of hours (Order prior authorization process requires typically about three days).  Note, some orders are OK to be placed during the same day, per medical necessity (hydration, etc). ';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['path'] = 'reports/stats-same-day-order';
+
+  /* Display: CSV */
+  $handler = $view->new_display('views_data_export', 'CSV', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['path'] = 'stats-same-day-orders.csv';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+    'block_1' => 0,
+  );
+
+  /* Display: BlockGrphTotOrdersOverTime */
+  $handler = $view->new_display('block', 'BlockGrphTotOrdersOverTime', 'block_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['label_field'] = 'created';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'title' => 'title',
+    'created' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'created' => '#2f7ed8',
+    'title' => '#205891',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Number Same Day Order over Time';
+  $export['stats_same_day_order'] = $view;
+
+  $view = new view();
+  $view->name = 'sum_completed_v_proc';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'eck_daily_report';
+  $view->human_name = 'SUM Completed v Proc';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Radonc Percent  Completed vs Proc';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['yaxis_max'] = '100';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'expression' => 'expression',
+    'field_radonc_completed' => 0,
+    'field_radonc_processed' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_radonc_completed' => '#910000',
+    'field_radonc_processed' => '#8bbc21',
+    'expression' => '#8bbc21',
+  );
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_completed]/[field_radonc_processed])*100';
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: RadOnc Processed (field_radonc_processed) */
+  $handler->display->display_options['filters']['field_radonc_processed_value']['id'] = 'field_radonc_processed_value';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['field'] = 'field_radonc_processed_value';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['value']['value'] = '0';
+
+  /* Display: Master */
+  $handler = $view->new_display('page', 'Master', 'page');
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['path'] = 'master-completed-v-proc';
+
+  /* Display: TableCvP */
+  $handler = $view->new_display('page', 'TableCvP', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Radonc Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_radonc_completed' => 'field_radonc_completed',
+    'field_radonc_processed' => 'field_radonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_radonc_completed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_radonc_processed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_completed]/[field_radonc_processed])*100';
+  $handler->display->display_options['path'] = 'reports/RadOncPctComplvsProcessed';
+
+  /* Display: CsvTvP */
+  $handler = $view->new_display('views_data_export', 'CsvTvP', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['path'] = 'pcntRadCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_1' => 'page_1',
+    'default' => 0,
+    'page' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'page_5' => 0,
+    'block_4' => 0,
+    'page_6' => 0,
+    'block_5' => 0,
+  );
+
+  /* Display: Graph CvP */
+  $handler = $view->new_display('page', 'Graph CvP', 'page_2');
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['path'] = 'reports/sum-completed-v-proc';
+
+  /* Display: Block GphCvP */
+  $handler = $view->new_display('block', 'Block GphCvP', 'block_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_completed]/[field_radonc_processed])*100';
+  $handler->display->display_options['block_description'] = 'GrphCvP';
+
+  /* Display: MOTableCvP */
+  $handler = $view->new_display('page', 'MOTableCvP', 'page_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_completed]/[field_medonc_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Processed (field_medonc_processed) */
+  $handler->display->display_options['filters']['field_medonc_processed_value']['id'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['field'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/MedOncPctComplvsProcessed';
+
+  /* Display: MoCsvCvP */
+  $handler = $view->new_display('views_data_export', 'MoCsvCvP', 'views_data_export_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent  Completed vs Proc';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_completed]/[field_medonc_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Processed (field_medonc_processed) */
+  $handler->display->display_options['filters']['field_medonc_processed_value']['id'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['field'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntMedoncCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_3' => 'page_3',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block MOGphCvP */
+  $handler = $view->new_display('block', 'Block MOGphCvP', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent  Completed vs Proc';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_completed]/[field_medonc_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Processed (field_medonc_processed) */
+  $handler->display->display_options['filters']['field_medonc_processed_value']['id'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['field'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'MOGrphCvP';
+
+  /* Display: MDCTableCvP */
+  $handler = $view->new_display('page', 'MDCTableCvP', 'page_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_completed]/[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Processed (field_medicare_processed) */
+  $handler->display->display_options['filters']['field_medicare_processed_value']['id'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['field'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/MedicarePctComplvsProcessed';
+
+  /* Display: MDCCsvTvP */
+  $handler = $view->new_display('views_data_export', 'MDCCsvTvP', 'views_data_export_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent  Completed vs Proc';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_completed]/[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Processed (field_medicare_processed) */
+  $handler->display->display_options['filters']['field_medicare_processed_value']['id'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['field'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntMedicareCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_4' => 'page_4',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block MDCGphCvP */
+  $handler = $view->new_display('block', 'Block MDCGphCvP', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent  Completed vs Proc';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_completed]/[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Processed (field_medicare_processed) */
+  $handler->display->display_options['filters']['field_medicare_processed_value']['id'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['field'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'MDCGrphCvP';
+
+  /* Display: ChTableCvP */
+  $handler = $view->new_display('page', 'ChTableCvP', 'page_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_completed]/[field_chemo_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Processed (field_chemo_processed) */
+  $handler->display->display_options['filters']['field_chemo_processed_value']['id'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['field'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/ChemoPctComplvsProcessed';
+
+  /* Display: ChCsvTvP */
+  $handler = $view->new_display('views_data_export', 'ChCsvTvP', 'views_data_export_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent  Completed vs Proc';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_completed]/[field_chemo_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Processed (field_chemo_processed) */
+  $handler->display->display_options['filters']['field_chemo_processed_value']['id'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['field'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntChemoCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_5' => 'page_5',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block ChemoGphCvP */
+  $handler = $view->new_display('block', 'Block ChemoGphCvP', 'block_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent  Completed vs Proc';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_completed]/[field_chemo_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Processed (field_chemo_processed) */
+  $handler->display->display_options['filters']['field_chemo_processed_value']['id'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['field'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'ChemoGrphCvP';
+
+  /* Display: TTableCvP */
+  $handler = $view->new_display('page', 'TTableCvP', 'page_6');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['label'] = 'Chemo Compl';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['label'] = 'Chemo Proc';
+  $handler->display->display_options['fields']['field_chemo_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['label'] = 'Medic Comp';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['label'] = 'Medic Proc';
+  $handler->display->display_options['fields']['field_medicare_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['label'] = 'MO Comp';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['label'] = 'MO Proc';
+  $handler->display->display_options['fields']['field_medonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['label'] = 'RO Comp';
+  $handler->display->display_options['fields']['field_radonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['label'] = 'RO Proc';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression_1']['id'] = 'expression_1';
+  $handler->display->display_options['fields']['expression_1']['table'] = 'views';
+  $handler->display->display_options['fields']['expression_1']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression_1']['label'] = 'Total Comp';
+  $handler->display->display_options['fields']['expression_1']['precision'] = '0';
+  $handler->display->display_options['fields']['expression_1']['expression'] = '[field_chemo_completed]+[field_radonc_completed]+[field_medonc_completed]+[field_medicare_completed]';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression_2']['id'] = 'expression_2';
+  $handler->display->display_options['fields']['expression_2']['table'] = 'views';
+  $handler->display->display_options['fields']['expression_2']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression_2']['label'] = 'Total Proc';
+  $handler->display->display_options['fields']['expression_2']['precision'] = '0';
+  $handler->display->display_options['fields']['expression_2']['expression'] = '[field_chemo_processed]+[field_radonc_processed]+[field_medonc_processed]+[field_medicare_processed]';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = '% Compltd/Procssd ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_completed]+[field_radonc_completed]+[field_medonc_completed]+[field_medicare_completed])/([field_chemo_processed]+[field_radonc_processed]+[field_medonc_processed]+[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Processed (field_chemo_processed) */
+  $handler->display->display_options['filters']['field_chemo_processed_value']['id'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['field'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/PctComplvsProcessed';
+
+  /* Display: TCsvCvP */
+  $handler = $view->new_display('views_data_export', 'TCsvCvP', 'views_data_export_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent  Completed vs Proc';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression_1']['id'] = 'expression_1';
+  $handler->display->display_options['fields']['expression_1']['table'] = 'views';
+  $handler->display->display_options['fields']['expression_1']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression_1']['label'] = 'Total Completed';
+  $handler->display->display_options['fields']['expression_1']['precision'] = '0';
+  $handler->display->display_options['fields']['expression_1']['expression'] = '([field_chemo_completed]+[field_radonc_completed]+[field_medonc_completed]+[field_medicare_completed])';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression_2']['id'] = 'expression_2';
+  $handler->display->display_options['fields']['expression_2']['table'] = 'views';
+  $handler->display->display_options['fields']['expression_2']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression_2']['label'] = 'Total Processed';
+  $handler->display->display_options['fields']['expression_2']['precision'] = '0';
+  $handler->display->display_options['fields']['expression_2']['expression'] = '([field_chemo_processed]+[field_radonc_processed]+[field_medonc_processed]+[field_medicare_processed])';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Total Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_completed]+[field_radonc_completed]+[field_medonc_completed]+[field_medicare_completed])/([field_chemo_processed]+[field_radonc_processed]+[field_medonc_processed]+[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Processed (field_chemo_processed) */
+  $handler->display->display_options['filters']['field_chemo_processed_value']['id'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['field'] = 'field_chemo_processed_value';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_6' => 'page_6',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'page_5' => 0,
+    'block_4' => 0,
+    'block_5' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block TGphCvP */
+  $handler = $view->new_display('block', 'Block TGphCvP', 'block_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Percent Completed vs Proc';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression_1']['id'] = 'expression_1';
+  $handler->display->display_options['fields']['expression_1']['table'] = 'views';
+  $handler->display->display_options['fields']['expression_1']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression_1']['label'] = 'Total Completed';
+  $handler->display->display_options['fields']['expression_1']['precision'] = '0';
+  $handler->display->display_options['fields']['expression_1']['expression'] = '([field_chemo_completed]+[field_radonc_completed]+[field_medonc_completed]+[field_medicare_completed])';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression_2']['id'] = 'expression_2';
+  $handler->display->display_options['fields']['expression_2']['table'] = 'views';
+  $handler->display->display_options['fields']['expression_2']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression_2']['label'] = 'Total Processed';
+  $handler->display->display_options['fields']['expression_2']['precision'] = '0';
+  $handler->display->display_options['fields']['expression_2']['expression'] = '([field_chemo_processed]+[field_radonc_processed]+[field_medonc_processed]+[field_medicare_processed])*100';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Total Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_completed]+[field_radonc_completed]+[field_medonc_completed]+[field_medicare_completed])/([field_chemo_processed]+[field_radonc_processed]+[field_medonc_processed]+[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Processed (field_medonc_processed) */
+  $handler->display->display_options['filters']['field_medonc_processed_value']['id'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['field'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'TGrphCvP';
+
+  /* Display: ROTablePvA */
+  $handler = $view->new_display('page', 'ROTablePvA', 'page_7');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Radonc Percent Processed vs Added';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_radonc_completed' => 'field_radonc_completed',
+    'field_radonc_processed' => 'field_radonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_radonc_completed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_radonc_processed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Added */
+  $handler->display->display_options['fields']['field_radonc_added']['id'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['field'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Processed to Added ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_processed]/[field_radonc_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: RadOnc Added (field_radonc_added) */
+  $handler->display->display_options['filters']['field_radonc_added_value']['id'] = 'field_radonc_added_value';
+  $handler->display->display_options['filters']['field_radonc_added_value']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['filters']['field_radonc_added_value']['field'] = 'field_radonc_added_value';
+  $handler->display->display_options['filters']['field_radonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_radonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/RadOncPctProcessedvsAdded';
+
+  /* Display: ROCsvPvA */
+  $handler = $view->new_display('views_data_export', 'ROCsvPvA', 'views_data_export_6');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Radonc Percent Processed vs Added';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Added */
+  $handler->display->display_options['fields']['field_radonc_added']['id'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['field'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Processed / Added';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_processed]/[field_radonc_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: RadOnc Added (field_radonc_added) */
+  $handler->display->display_options['filters']['field_radonc_added_value']['id'] = 'field_radonc_added_value';
+  $handler->display->display_options['filters']['field_radonc_added_value']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['filters']['field_radonc_added_value']['field'] = 'field_radonc_added_value';
+  $handler->display->display_options['filters']['field_radonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_radonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntRadProcsdAdded.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_7' => 'page_7',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'page_5' => 0,
+    'block_4' => 0,
+    'page_6' => 0,
+    'block_5' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block ROGphPvA */
+  $handler = $view->new_display('block', 'Block ROGphPvA', 'block_6');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['yaxis_max'] = '130';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'expression' => 'expression',
+    'field_radonc_processed' => 0,
+    'field_radonc_added' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_radonc_processed' => '#8bbc21',
+    'field_radonc_added' => '#8bbc21',
+    'expression' => '#8bbc21',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Added */
+  $handler->display->display_options['fields']['field_radonc_added']['id'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['field'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Processed / Added';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_processed]/[field_radonc_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: RadOnc Added (field_radonc_added) */
+  $handler->display->display_options['filters']['field_radonc_added_value']['id'] = 'field_radonc_added_value';
+  $handler->display->display_options['filters']['field_radonc_added_value']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['filters']['field_radonc_added_value']['field'] = 'field_radonc_added_value';
+  $handler->display->display_options['filters']['field_radonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_radonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'ROGrphPvA';
+
+  /* Display: MOTablePvA */
+  $handler = $view->new_display('page', 'MOTablePvA', 'page_8');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent Processed vs Added';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Processed / Added';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_processed]/[field_medonc_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Added (field_medonc_added) */
+  $handler->display->display_options['filters']['field_medonc_added_value']['id'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['filters']['field_medonc_added_value']['field'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/MedOncPctProcessedvsAdded';
+
+  /* Display: MoCsvPvA */
+  $handler = $view->new_display('views_data_export', 'MoCsvPvA', 'views_data_export_7');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent Proc vs Added';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Processed / Added';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_processed]/[field_medonc_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Added (field_medonc_added) */
+  $handler->display->display_options['filters']['field_medonc_added_value']['id'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['filters']['field_medonc_added_value']['field'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntMedoncProcsdAdded.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_8' => 'page_8',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'page_5' => 0,
+    'block_4' => 0,
+    'page_6' => 0,
+    'block_5' => 0,
+    'page_7' => 0,
+    'block_6' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block MOGphPvA */
+  $handler = $view->new_display('block', 'Block MOGphPvA', 'block_7');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent Proc vs Added';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'expression' => 'expression',
+    'field_medonc_processed' => 0,
+    'field_medonc_added' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_medonc_processed' => '#0d233a',
+    'field_medonc_added' => '#8bbc21',
+    'expression' => '#8bbc21',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_processed]/[field_medonc_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Added (field_medonc_added) */
+  $handler->display->display_options['filters']['field_medonc_added_value']['id'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['filters']['field_medonc_added_value']['field'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'MOGrphPvA';
+
+  /* Display: Block MOGphA */
+  $handler = $view->new_display('block', 'Block MOGphA', 'block_8');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Added';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_added' => 'field_medonc_added',
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_medonc_added' => '#2e3eaf',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Added (field_medonc_added) */
+  $handler->display->display_options['filters']['field_medonc_added_value']['id'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['filters']['field_medonc_added_value']['field'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'MOGrpA';
+
+  /* Display: MDCTablePvA */
+  $handler = $view->new_display('page', 'MDCTablePvA', 'page_9');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Daily Report: Medicare Added */
+  $handler->display->display_options['fields']['field_medicare_added']['id'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['table'] = 'field_data_field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['field'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Processed vs Added ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_processed]/[field_medicare_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Added (field_medicare_added) */
+  $handler->display->display_options['filters']['field_medicare_added_value']['id'] = 'field_medicare_added_value';
+  $handler->display->display_options['filters']['field_medicare_added_value']['table'] = 'field_data_field_medicare_added';
+  $handler->display->display_options['filters']['field_medicare_added_value']['field'] = 'field_medicare_added_value';
+  $handler->display->display_options['filters']['field_medicare_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/MedicarePctProcessedvsAdded';
+
+  /* Display: MdcCsvPvA */
+  $handler = $view->new_display('views_data_export', 'MdcCsvPvA', 'views_data_export_8');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent Proc vs Added';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Processed / Added';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_processed]/[field_medonc_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Added (field_medonc_added) */
+  $handler->display->display_options['filters']['field_medonc_added_value']['id'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['filters']['field_medonc_added_value']['field'] = 'field_medonc_added_value';
+  $handler->display->display_options['filters']['field_medonc_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntMedicareProcsdAdded.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_9' => 'page_9',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'page_5' => 0,
+    'block_4' => 0,
+    'page_6' => 0,
+    'block_5' => 0,
+    'page_7' => 0,
+    'block_6' => 0,
+    'page_8' => 0,
+    'block_7' => 0,
+    'block_8' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block MDCGphPvA */
+  $handler = $view->new_display('block', 'Block MDCGphPvA', 'block_9');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent Proc vs Added';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'expression' => 'expression',
+    'field_medonc_processed' => 0,
+    'field_medonc_added' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_medonc_processed' => '#0d233a',
+    'field_medonc_added' => '#8bbc21',
+    'expression' => '#8bbc21',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Added */
+  $handler->display->display_options['fields']['field_medicare_added']['id'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['table'] = 'field_data_field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['field'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Processed / Added';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_processed]/[field_medicare_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Added (field_medicare_added) */
+  $handler->display->display_options['filters']['field_medicare_added_value']['id'] = 'field_medicare_added_value';
+  $handler->display->display_options['filters']['field_medicare_added_value']['table'] = 'field_data_field_medicare_added';
+  $handler->display->display_options['filters']['field_medicare_added_value']['field'] = 'field_medicare_added_value';
+  $handler->display->display_options['filters']['field_medicare_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_added_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'MDCGrphPvA';
+
+  /* Display: ChTablePvA */
+  $handler = $view->new_display('page', 'ChTablePvA', 'page_10');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Added */
+  $handler->display->display_options['fields']['field_chemo_added']['id'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['field'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Processed vs Added ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_processed]/[field_chemo_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Added (field_chemo_added) */
+  $handler->display->display_options['filters']['field_chemo_added_value']['id'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['filters']['field_chemo_added_value']['field'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/ChemoPctProcessedvsAdded';
+
+  /* Display: ChCsvPvA */
+  $handler = $view->new_display('views_data_export', 'ChCsvPvA', 'views_data_export_9');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent Proc vs Added';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Added */
+  $handler->display->display_options['fields']['field_chemo_added']['id'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['field'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Processed / Added';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_processed]/[field_chemo_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Added (field_chemo_added) */
+  $handler->display->display_options['filters']['field_chemo_added_value']['id'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['filters']['field_chemo_added_value']['field'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntChemoProcsdAdded.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_10' => 'page_10',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'page_5' => 0,
+    'block_4' => 0,
+    'page_6' => 0,
+    'block_5' => 0,
+    'page_7' => 0,
+    'block_6' => 0,
+    'page_8' => 0,
+    'block_7' => 0,
+    'block_8' => 0,
+    'page_9' => 0,
+    'block_9' => 0,
+    'block_10' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block ChGphPvA */
+  $handler = $view->new_display('block', 'Block ChGphPvA', 'block_10');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent Proc vs Added';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'expression' => 'expression',
+    'field_medonc_processed' => 0,
+    'field_medonc_added' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_medonc_processed' => '#0d233a',
+    'field_medonc_added' => '#8bbc21',
+    'expression' => '#8bbc21',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Added */
+  $handler->display->display_options['fields']['field_chemo_added']['id'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['field'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Processed / Added';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_processed]/[field_chemo_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Added (field_chemo_added) */
+  $handler->display->display_options['filters']['field_chemo_added_value']['id'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['filters']['field_chemo_added_value']['field'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_added_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'ChGrphPvA';
+
+  /* Display: TTablePvA */
+  $handler = $view->new_display('page', 'TTablePvA', 'page_11');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Added */
+  $handler->display->display_options['fields']['field_chemo_added']['id'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['field'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Added */
+  $handler->display->display_options['fields']['field_radonc_added']['id'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['field'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Added */
+  $handler->display->display_options['fields']['field_medicare_added']['id'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['table'] = 'field_data_field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['field'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Processed vs Added ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '(([field_chemo_processed]+[field_medonc_processed]+[field_radonc_processed]+[field_medicare_processed])/([field_chemo_added]+[field_medonc_added]+[field_radonc_added]+[field_medicare_added]))*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Added (field_chemo_added) */
+  $handler->display->display_options['filters']['field_chemo_added_value']['id'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['filters']['field_chemo_added_value']['field'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/PctProcessedvsAdded';
+
+  /* Display: TCsvPvA */
+  $handler = $view->new_display('views_data_export', 'TCsvPvA', 'views_data_export_10');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = ' Percent Proc vs Added';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Added */
+  $handler->display->display_options['fields']['field_chemo_added']['id'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['field'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Daily Report: Medicare Added */
+  $handler->display->display_options['fields']['field_medicare_added']['id'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['table'] = 'field_data_field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['field'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Daily Report: RadOnc Added */
+  $handler->display->display_options['fields']['field_radonc_added']['id'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['table'] = 'field_data_field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['field'] = 'field_radonc_added';
+  $handler->display->display_options['fields']['field_radonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Processed / Added';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '(([field_chemo_processed]+[field_medonc_processed]+[field_radonc_processed]+[field_medicare_processed])/([field_chemo_added]+[field_medonc_added]+[field_radonc_added]+[field_medicare_added]))*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Added (field_chemo_added) */
+  $handler->display->display_options['filters']['field_chemo_added_value']['id'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['filters']['field_chemo_added_value']['field'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_added_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntProcsdAdded.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_11' => 'page_11',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'page_5' => 0,
+    'block_4' => 0,
+    'page_6' => 0,
+    'block_5' => 0,
+    'page_7' => 0,
+    'block_6' => 0,
+    'page_8' => 0,
+    'block_7' => 0,
+    'block_8' => 0,
+    'page_9' => 0,
+    'block_9' => 0,
+    'page_10' => 0,
+    'block_10' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+  $export['sum_completed_v_proc'] = $view;
+
+  $view = new view();
+  $view->name = 'sum_denied_v_completed';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'eck_daily_report';
+  $view->human_name = 'SUM Denied v Completed';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Radonc Percent  Completed vs Proc';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['yaxis_max'] = '100';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'expression' => 'expression',
+    'field_radonc_completed' => 0,
+    'field_radonc_processed' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_radonc_completed' => '#910000',
+    'field_radonc_processed' => '#8bbc21',
+    'expression' => '#8bbc21',
+  );
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_completed]/[field_radonc_processed])*100';
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: RadOnc Processed (field_radonc_processed) */
+  $handler->display->display_options['filters']['field_radonc_processed_value']['id'] = 'field_radonc_processed_value';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['field'] = 'field_radonc_processed_value';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_radonc_processed_value']['value']['value'] = '0';
+
+  /* Display: Master */
+  $handler = $view->new_display('page', 'Master', 'page');
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['path'] = 'master-completed-v-proc';
+
+  /* Display: ROTableDvC */
+  $handler = $view->new_display('page', 'ROTableDvC', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'NEED TO ADD FIELD Radonc Percent Denied-Completed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_radonc_completed' => 'field_radonc_completed',
+    'field_radonc_processed' => 'field_radonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_radonc_completed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_radonc_processed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_completed]/[field_radonc_processed])*100';
+  $handler->display->display_options['path'] = 'reports/RadOncPctComplvsProcessed';
+
+  /* Display: CsvTvP */
+  $handler = $view->new_display('views_data_export', 'CsvTvP', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['path'] = 'pcntRadCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'page_1' => 'page_1',
+    'default' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+  );
+
+  /* Display: Graph CvP */
+  $handler = $view->new_display('page', 'Graph CvP', 'page_2');
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['path'] = 'reports/sum-completed-v-proc';
+
+  /* Display: Block GphCvP */
+  $handler = $view->new_display('block', 'Block GphCvP', 'block_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: RadOnc Completed */
+  $handler->display->display_options['fields']['field_radonc_completed']['id'] = 'field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['table'] = 'field_data_field_radonc_completed';
+  $handler->display->display_options['fields']['field_radonc_completed']['field'] = 'field_radonc_completed';
+  /* Field: Daily Report: RadOnc Processed */
+  $handler->display->display_options['fields']['field_radonc_processed']['id'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['table'] = 'field_data_field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['field'] = 'field_radonc_processed';
+  $handler->display->display_options['fields']['field_radonc_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent RadOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_radonc_completed]/[field_radonc_processed])*100';
+  $handler->display->display_options['block_description'] = 'GrphCvP';
+
+  /* Display: MOTableCvP */
+  $handler = $view->new_display('page', 'MOTableCvP', 'page_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_completed]/[field_medonc_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Processed (field_medonc_processed) */
+  $handler->display->display_options['filters']['field_medonc_processed_value']['id'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['field'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/MedOncPctComplvsProcessed';
+
+  /* Display: MoCsvTvP */
+  $handler = $view->new_display('views_data_export', 'MoCsvTvP', 'views_data_export_2');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_completed]/[field_medonc_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Processed (field_medonc_processed) */
+  $handler->display->display_options['filters']['field_medonc_processed_value']['id'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['field'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntMedoncCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_3' => 'page_3',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+  );
+
+  /* Display: Block MOGphCvP */
+  $handler = $view->new_display('block', 'Block MOGphCvP', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medonc Percent  Completed vs Proc';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: MedOnc Completed */
+  $handler->display->display_options['fields']['field_medonc_completed']['id'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['table'] = 'field_data_field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['field'] = 'field_medonc_completed';
+  $handler->display->display_options['fields']['field_medonc_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent MedOnc Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medonc_completed]/[field_medonc_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: MedOnc Processed (field_medonc_processed) */
+  $handler->display->display_options['filters']['field_medonc_processed_value']['id'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['field'] = 'field_medonc_processed_value';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medonc_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'MOGrphCvP';
+
+  /* Display: MDCTableCvP */
+  $handler = $view->new_display('page', 'MDCTableCvP', 'page_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent  Completed vs Processed';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_completed]/[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Processed (field_medicare_processed) */
+  $handler->display->display_options['filters']['field_medicare_processed_value']['id'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['field'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/MedicarePctComplvsProcessed';
+
+  /* Display: MDCCsvTvP */
+  $handler = $view->new_display('views_data_export', 'MDCCsvTvP', 'views_data_export_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent  Completed vs Proc';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_completed]/[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Processed (field_medicare_processed) */
+  $handler->display->display_options['filters']['field_medicare_processed_value']['id'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['field'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntMedicareCompProcsd.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_4' => 'page_4',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block MDCGphCvP */
+  $handler = $view->new_display('block', 'Block MDCGphCvP', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Medicare Percent  Completed vs Proc';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Medicare Completed */
+  $handler->display->display_options['fields']['field_medicare_completed']['id'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['table'] = 'field_data_field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['field'] = 'field_medicare_completed';
+  $handler->display->display_options['fields']['field_medicare_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Medicare Completed/Processed ';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_medicare_completed]/[field_medicare_processed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Medicare Processed (field_medicare_processed) */
+  $handler->display->display_options['filters']['field_medicare_processed_value']['id'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['field'] = 'field_medicare_processed_value';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_medicare_processed_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'MDCGrphCvP';
+
+  /* Display: ChTableDvC */
+  $handler = $view->new_display('page', 'ChTableDvC', 'page_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent Denied vs Completed';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_medonc_completed' => 'field_medonc_completed',
+    'field_medonc_processed' => 'field_medonc_processed',
+    'expression' => 'expression',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_date';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_medonc_processed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'expression' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Denied */
+  $handler->display->display_options['fields']['field_chemo_denied']['id'] = 'field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['table'] = 'field_data_field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['field'] = 'field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Denied / Completed';
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_denied]/[field_chemo_completed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Completed (field_chemo_completed) */
+  $handler->display->display_options['filters']['field_chemo_completed_value']['id'] = 'field_chemo_completed_value';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['field'] = 'field_chemo_completed_value';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'reports/ChemoPctDenVsCompl';
+
+  /* Display: ChCsvDvT */
+  $handler = $view->new_display('views_data_export', 'ChCsvDvT', 'views_data_export_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent Denied vs Completed';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Denied */
+  $handler->display->display_options['fields']['field_chemo_denied']['id'] = 'field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['table'] = 'field_data_field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['field'] = 'field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Denied / Completed ';
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_denied]/[field_chemo_completed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Completed (field_chemo_completed) */
+  $handler->display->display_options['filters']['field_chemo_completed_value']['id'] = 'field_chemo_completed_value';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['field'] = 'field_chemo_completed_value';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_completed_value']['value']['value'] = '0';
+  $handler->display->display_options['path'] = 'pcntChemoDenComp.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_5' => 'page_5',
+    'default' => 0,
+    'page' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'block_1' => 0,
+    'page_3' => 0,
+    'block_2' => 0,
+    'page_4' => 0,
+    'block_3' => 0,
+    'block_4' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block ChemoGphDvC */
+  $handler = $view->new_display('block', 'Block ChemoGphDvC', 'block_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Chemo Percent Denied vs Completed';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Completed */
+  $handler->display->display_options['fields']['field_chemo_completed']['id'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['table'] = 'field_data_field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['field'] = 'field_chemo_completed';
+  $handler->display->display_options['fields']['field_chemo_completed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Denied */
+  $handler->display->display_options['fields']['field_chemo_denied']['id'] = 'field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['table'] = 'field_data_field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['field'] = 'field_chemo_denied';
+  $handler->display->display_options['fields']['field_chemo_denied']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Denied / Completed';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['precision'] = '0';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_denied]/[field_chemo_completed])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Denied (field_chemo_denied) */
+  $handler->display->display_options['filters']['field_chemo_denied_value']['id'] = 'field_chemo_denied_value';
+  $handler->display->display_options['filters']['field_chemo_denied_value']['table'] = 'field_data_field_chemo_denied';
+  $handler->display->display_options['filters']['field_chemo_denied_value']['field'] = 'field_chemo_denied_value';
+  $handler->display->display_options['filters']['field_chemo_denied_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_denied_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'ChemoGrphDvC';
+  $export['sum_denied_v_completed'] = $view;
 
   return $export;
 }
