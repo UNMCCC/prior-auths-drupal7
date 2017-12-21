@@ -109,7 +109,14 @@ class EntityDailyReportMigration extends Migration {
         //date
         if(preg_match('/\d+\/\d+\/\d+/',$row->date, $matches)){
             $row->date = $row->date . ' 12:00:00 PM';
+        }else{
+            $row->date = date("Y-m-d"); // set to today's date, as no records were added today.
         }
-   }
+
+    }
 
 }
+
+
+
+
