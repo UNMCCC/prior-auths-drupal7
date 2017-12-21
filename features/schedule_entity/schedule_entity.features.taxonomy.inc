@@ -36,7 +36,7 @@ function schedule_entity_taxonomy_default_vocabularies() {
       'name' => 'Insurance',
       'machine_name' => 'insurance',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
       'rdf_mapping' => array(

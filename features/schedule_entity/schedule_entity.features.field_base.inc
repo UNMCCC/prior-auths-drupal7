@@ -80,6 +80,9 @@ function schedule_entity_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'field_encrypt' => array(
+        'encrypt' => 0,
+      ),
       'max_length' => 30,
     ),
     'translatable' => 0,
@@ -164,6 +167,27 @@ function schedule_entity_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_notes'.
+  $field_bases['field_notes'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_notes',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 455,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_pa_status'.
   $field_bases['field_pa_status'] = array(
     'active' => 1,
@@ -181,9 +205,14 @@ function schedule_entity_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'Appealed' => 'Appealed',
+        'Appeal Won' => 'Appeal Won',
+        'Appeal Lost' => 'Appeal Lost',
         'Authorized' => 'Authorized',
         'Completed' => 'Completed',
         'Denied' => 'Denied',
+        'Dictation Needed' => 'DIctation Needed',
+        'Ins. Form Needed' => 'Ins. Form Needed',
+        'Medical Necessity' => 'Medical Necessity',
         'No Orders' => 'No Orders',
         'No PA Needed' => 'No PA Needed',
         'Pending' => 'Pending',
@@ -209,9 +238,13 @@ function schedule_entity_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'behaviors' => array(),
       'handler' => 'base',
       'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
         'sort' => array(
           'type' => 'none',
         ),
@@ -223,6 +256,62 @@ function schedule_entity_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_patient_reference1'.
+  $field_bases['field_patient_reference1'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_patient_reference1',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'patient' => 'patient',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_reference_id'.
+  $field_bases['field_reference_id'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_reference_id',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_staff_notes'.

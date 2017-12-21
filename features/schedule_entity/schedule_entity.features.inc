@@ -28,33 +28,3 @@ function schedule_entity_eck_bundle_info() {
   );
   return $items;
 }
-
-/**
- * Implements hook_eck_entity_type_info().
- */
-function schedule_entity_eck_entity_type_info() {
-  $items = array(
-    'schedule' => array(
-      'name' => 'schedule',
-      'label' => 'Schedule',
-      'properties' => array(
-        'created' => array(
-          'label' => 'Created',
-          'type' => 'integer',
-          'behavior' => 'created',
-        ),
-        'changed' => array(
-          'label' => 'Changed',
-          'type' => 'integer',
-          'behavior' => 'changed',
-        ),
-        'uid' => array(
-          'label' => 'Author',
-          'type' => 'integer',
-          'behavior' => 'author',
-        ),
-      ),
-    ),
-  );
-  return $items;
-}
