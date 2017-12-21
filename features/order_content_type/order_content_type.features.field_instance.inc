@@ -10,6 +10,46 @@
 function order_content_type_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-order-field_auth_number'.
+  $field_instances['node-order-field_auth_number'] = array(
+    'bundle' => 'order',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_auth_number',
+    'label' => 'Auth Number',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-order-field_drug'.
   $field_instances['node-order-field_drug'] = array(
     'bundle' => 'order',
@@ -22,7 +62,7 @@ function order_content_type_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -33,7 +73,7 @@ function order_content_type_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_drug',
-    'label' => 'Order Description',
+    'label' => 'Order description',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -46,7 +86,7 @@ function order_content_type_field_default_field_instances() {
         'size' => 180,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 1,
     ),
   );
 
@@ -62,7 +102,7 @@ function order_content_type_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 9,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -71,7 +111,6 @@ function order_content_type_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_insurance_payer_',
     'label' => 'Insurance (Payer)',
@@ -84,7 +123,7 @@ function order_content_type_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 18,
+      'weight' => 5,
     ),
   );
 
@@ -105,7 +144,7 @@ function order_content_type_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 8,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -130,7 +169,7 @@ function order_content_type_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 20,
+      'weight' => 6,
     ),
   );
 
@@ -146,7 +185,7 @@ function order_content_type_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -157,7 +196,7 @@ function order_content_type_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_order_status',
-    'label' => 'Order Status',
+    'label' => 'Order status',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -167,7 +206,44 @@ function order_content_type_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-order-field_pa_status'.
+  $field_instances['node-order-field_pa_status'] = array(
+    'bundle' => 'order',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pa_status',
+    'label' => 'PA Status',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 9,
     ),
   );
 
@@ -182,10 +258,11 @@ function order_content_type_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -210,7 +287,47 @@ function order_content_type_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 17,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-order-field_reference_id'.
+  $field_instances['node-order-field_reference_id'] = array(
+    'bundle' => 'order',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_reference_id',
+    'label' => 'Reference ID',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 10,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
     ),
   );
 
@@ -225,10 +342,11 @@ function order_content_type_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'bypass_access' => 0,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -253,7 +371,7 @@ function order_content_type_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 19,
+      'weight' => 8,
     ),
   );
 
@@ -275,7 +393,7 @@ function order_content_type_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -308,17 +426,20 @@ function order_content_type_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 16,
+      'weight' => 3,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Auth Number');
   t('Insurance (Payer)');
-  t('Order Description');
   t('Order ID');
-  t('Order Status');
+  t('Order description');
+  t('Order status');
+  t('PA Status');
   t('Patient');
+  t('Reference ID');
   t('Schedule');
   t('Start Date');
 

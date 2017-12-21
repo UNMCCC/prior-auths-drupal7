@@ -21,7 +21,7 @@ function order_content_type_node_info() {
     'order' => array(
       'name' => t('Order'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('An drug order, most of the times.'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',

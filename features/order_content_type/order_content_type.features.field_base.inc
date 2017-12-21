@@ -31,32 +31,6 @@ function order_content_type_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_insurance_payer_'.
-  $field_bases['field_insurance_payer_'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_insurance_payer_',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'insurance',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
   // Exported field_base: 'field_order_id'.
   $field_bases['field_order_id'] = array(
     'active' => 1,
@@ -116,7 +90,6 @@ function order_content_type_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'behaviors' => array(),
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -152,7 +125,6 @@ function order_content_type_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'behaviors' => array(),
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -163,9 +135,7 @@ function order_content_type_field_default_field_bases() {
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(
-          'schedule' => 'schedule',
-        ),
+        'target_bundles' => array(),
       ),
       'target_type' => 'schedule',
     ),

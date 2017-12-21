@@ -21,7 +21,7 @@ function order_content_type_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Edit these',
-    'weight' => '0',
+    'weight' => '2',
     'children' => array(
       0 => 'group_order_details',
     ),
@@ -34,7 +34,7 @@ function order_content_type_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_edit|node|order|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -46,10 +46,12 @@ function order_content_type_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_edit';
   $field_group->data = array(
-    'label' => 'Order Details',
-    'weight' => '11',
+    'label' => 'Order details',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_order_status',
+      0 => 'field_reference_id',
+      1 => 'field_pa_status',
+      2 => 'field_auth_number',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -61,7 +63,7 @@ function order_content_type_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_order_details|node|order|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -73,35 +75,35 @@ function order_content_type_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Read Only',
-    'weight' => '2',
+    'label' => 'Read only',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_start_date',
+      0 => 'field_order_status',
       1 => 'field_drug',
-      2 => 'field_schedule_ref',
-      3 => 'field_patient_ref',
-      4 => 'field_order_id',
+      2 => 'field_order_id',
+      3 => 'field_start_date',
+      4 => 'field_patient_ref',
       5 => 'field_insurance_payer_',
-      6 => 'title',
+      6 => 'field_schedule_ref',
+      7 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Read Only',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '<div class="messages warning">Do not edit any of these fields.</div>',
-      ),
       'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-read-only field-group-tab',
+        'required_fields' => 1,
+      ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_read_only|node|order|form'] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Edit these');
-  t('Order Details');
-  t('Read Only');
+  t('Order details');
+  t('Read only');
 
   return $field_groups;
 }
