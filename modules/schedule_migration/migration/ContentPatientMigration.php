@@ -20,13 +20,14 @@ class ContentPatientMigration extends Migration {
     $columns = array(
       0 => array('date', 'The scheduled date of appointment'),
       1 => array('mrn', 'The medical record number'),
-      2 => array('lastname', 'The patient last name'),
-      3 => array('firstname', 'The scanned first name'),
-      4 => array('middle', 'A Middle name'),
-      5 => array('location', 'The location where patient is scheduled to'),
-      6 => array('activity', 'The activity'),
-      7 => array('ins_provider', 'The insurance provider (ref)'),
-   );
+      2 => array('pat_id1', 'Another cryptic unique number used for keys'),
+      3 => array('lastname', 'The patient last name'),
+      4 => array('firstname', 'The scanned first name'),
+      5 => array('middle', 'A Middle name'),
+      6 => array('location', 'The location where patient is scheduled to'),
+      7 => array('activity', 'The activity'),
+      8 => array('ins_provider', 'The insurance provider (ref)'),
+    );
 
     $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/Patients.csv';
 
@@ -35,7 +36,7 @@ class ContentPatientMigration extends Migration {
     $this->body = t('CSV Chemo Add On Schedule ');
 
     $this->map = new MigrateSQLMap($this->machineName,
-      array('mrn' => array(
+      array('pat_id1' => array(
            'type' => 'int',
            'unsigned' => TRUE,
            'not null' => TRUE,
@@ -46,11 +47,11 @@ class ContentPatientMigration extends Migration {
 
     $this->destination = new MigrateDestinationNode('patient');
     $this->addFieldMapping('uid')->defaultValue(1);
-    $this->addFieldMapping('field_name','firstname');
-    $this->addFieldMapping('field_name:given','firstname');
-    $this->addFieldMapping('field_name:family','lastname');
-    $this->addFieldMapping('field_name:middle','middle');
-    $this->addFieldMapping('field_mrn','mrn')
+    $this->addFieldMapping('field_given_name','firstname');
+    $this->addFieldMapping('field_last_name','lastname');
+    $this->addFieldMapping('field_middle_name','middle');
+    $this->addFieldMapping('field_mrn','mrn');
+    $this->addFieldMapping('field_mq_pat_id','pat_id1')
      ->description('Ensure not already in system, prepareRow()');
 
     $this->addFieldMapping('promote')->defaultValue(0);
@@ -90,11 +91,11 @@ class ContentPatientMigration extends Migration {
     }
 
     // do we have this patient?
-    $mrnid = $this->getPatient($row);
-    if($mrnid == -999999999999){
+    $pat_id1 = $this->getPatient($row);
+    if($pat_id1 == -999999999999){
       return FALSE;
     }else{
-      $row->mrn = $mrnid;
+      $row->pat_id1 = $pat_id1;
       return TRUE;
     }
   }
@@ -106,14 +107,14 @@ class ContentPatientMigration extends Migration {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', 'patient');
-    $query->fieldCondition('field_mrn', 'value',(int)$row->mrn, '=');
+    $query->fieldCondition('field_mq_pat_id', 'value',(int)$row->pat_id1, '=');
     $results = $query->execute();
     if (!empty($results['node'])) {
-//      watchdog('schedule_migration', "Existing Patient: Skip node creation: $row->lastname $row->firstname");
+      watchdog('schedule_migration', "Existing Patient: Skip node creation: $row->lastname $row->firstname");
       return -999999999999; 
     }else{
-      $mrnid = $row->mrn;
-      return $mrnid;
+      $pat_id1 = $row->pat_id1;
+      return $pat_id1;
     }
   }
 

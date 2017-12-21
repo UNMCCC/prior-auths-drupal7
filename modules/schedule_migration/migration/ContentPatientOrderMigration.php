@@ -20,13 +20,13 @@ class ContentPatientOrderMigration extends Migration {
       0 => array('orc_id', 'The unique order id'),
       1 => array('start_date', 'The treatment start date and appt date'),
       2 => array('mrn', 'The patient medical record number - MRN'),
-      3 => array('lastname', 'The patient name'),
-      4 => array('firstname', 'The patient name'),
-      5 => array('middle', 'The patient name'),
-      6 => array('payer', 'The insurer'),
-      7 => array('order_description', 'The order description'),
-      8 => array('order_status', 'The order status'),
-      9 => array('orc_id_drug', 'Dummy field'),
+      3 => array('pat_id1', 'Another cryptic unique number used for keys'),
+      4 => array('lastname', 'The patient name'),
+      5 => array('firstname', 'The patient name'),
+      6 => array('middle', 'The patient name'),
+      7 => array('payer', 'The insurer'),
+      8 => array('order_description', 'The order description'),
+      9 => array('order_status', 'The order status'),
    );
 
     $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/orders.csv';
@@ -36,7 +36,7 @@ class ContentPatientOrderMigration extends Migration {
     $this->body = t('CSV Patients from Chemo Orders');
 
     $this->map = new MigrateSQLMap($this->machineName,
-      array('mrn' => array(
+      array('pat_id1' => array(
            'type' => 'int',
            'unsigned' => TRUE,
            'not null' => TRUE,
@@ -47,13 +47,12 @@ class ContentPatientOrderMigration extends Migration {
 
     $this->destination = new MigrateDestinationNode('patient');
     $this->addFieldMapping('uid')->defaultValue(1);
-    $this->addFieldMapping('field_name','firstname');
-    $this->addFieldMapping('field_name:given','firstname');
-    $this->addFieldMapping('field_name:family','lastname');
-    $this->addFieldMapping('field_name:middle','middle');
-    $this->addFieldMapping('field_mrn','mrn')
-     ->description('Ensure not already in system, prepareRow()');
-
+    $this->addFieldMapping('field_given_name','firstname');
+    $this->addFieldMapping('field_last_name','lastname');
+    $this->addFieldMapping('field_middle_name','middle');
+    $this->addFieldMapping('field_mrn','mrn');
+    $this->addFieldMapping('field_mq_pat_id','pat_id1')     
+      ->description('Ensure not already in system, prepareRow()');
     $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('sticky')->defaultValue(0);
     $this->addFieldMapping('revision')->defaultValue(0);
@@ -70,8 +69,6 @@ class ContentPatientOrderMigration extends Migration {
     ));
 
     $this->addUnmigratedDestinations(array(
-      'field_name:generational',
-      'field_name:credentials',
       'language',       // Language  (fr, en, ...)
       'tnid',           // The translation set id for this node
       'translate',      //      A boolean indicating whether this translation page needs to be updated
@@ -87,11 +84,11 @@ class ContentPatientOrderMigration extends Migration {
   public function prepareRow($row) {
 
     // do we have this patient?
-    $mrnid = $this->getPatient($row);
-    if($mrnid == -999999999999){
+    $pat_id1 = $this->getPatient($row);
+    if($pat_id1 == -999999999999){
       return FALSE;
     }else{
-      $row->mrn = $mrnid;
+      $row->pat_id1 = $pat_id1;
       return TRUE;
     }
   }
@@ -103,14 +100,14 @@ class ContentPatientOrderMigration extends Migration {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', 'patient');
-    $query->fieldCondition('field_mrn', 'value',(int)$row->mrn, '=');
+    $query->fieldCondition('field_mq_pat_id', 'value',(int)$row->pat_id1, '=');
     $results = $query->execute();
     if (!empty($results['node'])) {
 //      watchdog('schedule_migration', "Existing Patient: Skip node creation: $row->lastname $row->firstname");
       return -999999999999; 
     }else{
-      $mrnid = $row->mrn;
-      return $mrnid;
+      $pat_id1 = $row->pat_id1;
+      return $pat_id1;
     }
   }
 

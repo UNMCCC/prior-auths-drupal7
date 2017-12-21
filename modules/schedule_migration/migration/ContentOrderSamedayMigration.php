@@ -22,16 +22,16 @@ class ContentOrderSamedayMigration extends Migration {
       0 => array('orc_id', 'The unique order id'),
       1 => array('start_date', 'The treatment start date and appt date'),
       2 => array('mrn', 'The patient medical record number - MRN'),
-      3 => array('last_name', 'The patient name'),
-      4 => array('first_name', 'The patient name'),
-      5 => array('middle_name', 'The patient name'),
-      6 => array('notes', 'relevant notes'),
+      3 => array('pat_id1', 'Another cryptic unique number used for keys'),
+      4 => array('last_name', 'The patient name'),
+      5 => array('first_name', 'The patient name'),
+      6 => array('middle_name', 'The patient name'),
+ //     7 => array('notes', 'relevant notes'),
       7 => array('payer', 'The insurer'),
       8 => array('order_description', 'The order description'),
       9 => array('order_status', 'The order status'),
-      10 => array('location','Scheduled here'),
-      11 => array('activity','The activity to this appointment'),
-      12 => array('orc_id_drug', 'Dummy field'),
+      10 => array('orc_id_drug', 'Dummy field'),
+      11 => array('sch_id', 'Dummy field'),
    );
 
    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/sameday_orders.csv';
@@ -64,11 +64,13 @@ class ContentOrderSamedayMigration extends Migration {
 
     $this->addFieldMapping('field_department')->defaultValue('Placed Today');
 
-    $this->addFieldMapping('field_patient_ref','mrn')
-      ->description('Handled in prepareRow() as it needs patient lookup.');
+    $this->addFieldMapping('field_patient_ref', 'pat_id1')
+       ->description('lookup existing pat_id1s, or create one in prepareRow');
+    $this->addFieldMapping('field_schedule_ref', 'sch_id')
+       ->description('lookup existing chemo schedules');
 
-    $this->addFieldMapping('field_schedule_ref','sch')
-      ->sourceMigration('EntityScheduleChemoSameday');
+//    $this->addFieldMapping('field_schedule_ref','sch')
+//      ->sourceMigration('EntityScheduleChemoSameday');
 //      ->description('Handled in prepareRow() as it needs patient lookup.');
 
     $this->addFieldMapping('field_start_date','start_date'); // @todo  prepare date
@@ -81,7 +83,7 @@ class ContentOrderSamedayMigration extends Migration {
       'first_name',    // The patient frist name
       'last_name',    // The patient last name
       'middle_name',    // The patient's middle name
-      'notes',
+//      'notes',  // commented out in SQL-to-src too
       'location',
       'activity',
     ));
@@ -120,29 +122,30 @@ class ContentOrderSamedayMigration extends Migration {
 
   public function prepareRow($row) {
 
-     parent::prepareRow($row);
-    // Is there a pat MRN? 
-    $mrnid = $this->getMrn($row);
-    $row->mrn = $mrnid;
+    parent::prepareRow($row);
 
-    $schid = $this->getSch($row,$mrnid);
-    $row->sch = $schid;
+     // Is there a pat ID?
+    $patid = $this->getPatID($row);
+    $row->pat_id1 = $patid;
 
+    // Is there a chemo sch?
+    $schid = $this->getSchID($patid);
+    $row->sch_id = $schid;
   }
 
-  public function getMrn($row) {
+  public function getPatID($row) {
     // query database here, match with $row element, 
     // return nid for this person, otherwise false.
-    $field_values = array();
+    // $field_values = array();
 
     // Search for an already migrated person entity with the same title
     // (title is "givenName" "surName")
 
-    if (!empty($row->mrn)) {
+    if (!empty($row->pat_id1)) {
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'node');
       $query->entityCondition('bundle', 'patient');
-      $query->fieldCondition('field_mrn', 'value', (int)$row->mrn, '=');
+      $query->fieldCondition('field_mq_pat_id', 'value', (int)$row->pat_id1, '=');
       $results = $query->execute();
       if (!empty($results['node'])) {
         $nid = reset($results['node'])->nid;
@@ -155,45 +158,35 @@ class ContentOrderSamedayMigration extends Migration {
         //there is no MRN, this is an orphan order
         watchdog('schedule_migration', "orphan today order: $row->create_date, $row->drug");
     }
-    return $nid;
+    return;
   }
 
-  public function getSch($row,$mrnid) {
+  public function getSchID($patid) {
     // query database here, match with $row element, 
     // return nid for this person, otherwise false.
-    $field_values = array();
+    //$field_values = array();
 
     // Search for an already migrated person entity with the same title
     // (title is "givenName" "surName")
 
-    if (!empty($row->start_date)) {
-      $start_date = $row->start_date;
-      $start_date = date("Y-m-d", strtotime($start_date)); 
+    if ($patid) {
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'schedule');
       $query->entityCondition('bundle', 'schedule');
-      $query->fieldCondition('field_patient_reference', 'target_id', $mrnid, '=');
-     // here-- need more conditions.
-      $query->fieldCondition('field_app_date', 'value', $start_date, '=');
-//      $query->fieldCondition('field_app_date', 'value', '2017-05-12', '>=');
-      $query->addTag('efq_debug');
-      dpm($query);
-//      dpm($query->arguments());
-
+      $query->fieldCondition('field_patient_reference1', 'target_id', $patid, '=');
       $results = $query->execute();
-      //dpm($results);
       if (!empty($results['schedule'])) {
-        $sid = reset($results['schedule'])->id;
-        return($sid);
+        $id = reset($results['schedule'])->id;
+        return($id);
       }else{
-       // make a new patient to-do
-        watchdog('schedule_migration', "no date match today: $row->start_date ");
-      } 
+        // make a new patient to-do
+        watchdog('schedule_migration', "no sch match this pat id: $patid");
+      }
     }else{
-        //there is no MRN, this is an orphan order
-        watchdog('schedule_migration', "orphan today order: $row->start_date");
+        //there is no pat id, this is an orphan order
+        watchdog('schedule_migration', "orphan order for this pat id: $patid");
     }
-    return $sid;
+    return;
   }
 
 }
