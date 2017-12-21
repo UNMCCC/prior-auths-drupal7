@@ -10,6 +10,97 @@
 function patient_content_type_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_given_name'.
+  $field_bases['field_given_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_given_name',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'field_encrypt' => array(
+        'encrypt' => 0,
+      ),
+      'max_length' => 150,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_last_name'.
+  $field_bases['field_last_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_last_name',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'field_encrypt' => array(
+        'encrypt' => 0,
+      ),
+      'max_length' => 150,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_middle_name'.
+  $field_bases['field_middle_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_middle_name',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'field_encrypt' => array(
+        'encrypt' => 0,
+      ),
+      'max_length' => 100,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_mq_pat_id'.
+  $field_bases['field_mq_pat_id'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mq_pat_id',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'field_encrypt' => array(
+        'encrypt' => 0,
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_mrn'.
   $field_bases['field_mrn'] = array(
     'active' => 1,
@@ -20,7 +111,11 @@ function patient_content_type_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(),
+    'settings' => array(
+      'field_encrypt' => array(
+        'encrypt' => 1,
+      ),
+    ),
     'translatable' => 0,
     'type' => 'number_integer',
   );
