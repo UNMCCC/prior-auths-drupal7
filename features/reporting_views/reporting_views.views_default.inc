@@ -3240,15 +3240,6 @@ function reporting_views_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: mq_pat_id */
-  $handler->display->display_options['fields']['field_mq_pat_id']['id'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['table'] = 'field_data_field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['field'] = 'field_mq_pat_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['relationship'] = 'field_patient_reference1_target_id';
-  $handler->display->display_options['fields']['field_mq_pat_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Field: Schedule: PatIDRef */
   $handler->display->display_options['fields']['field_patient_reference1']['id'] = 'field_patient_reference1';
   $handler->display->display_options['fields']['field_patient_reference1']['table'] = 'field_data_field_patient_reference1';
@@ -4114,7 +4105,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Ch Proc';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4197,7 +4188,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total MO Proc';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4280,7 +4271,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total RO Proc';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4363,7 +4354,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total medicare Proc';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4446,7 +4437,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total MO completed';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4522,7 +4513,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total RO Completed';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4598,7 +4589,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Medicare Completed';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4674,7 +4665,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Chemo Completed';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4750,7 +4741,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Chemo Added';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4816,7 +4807,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Mo Added';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4882,7 +4873,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total RO Added';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4948,7 +4939,7 @@ function reporting_views_views_default_views() {
   $handler->display->display_options['fields']['field_app_date']['table'] = 'field_data_field_app_date';
   $handler->display->display_options['fields']['field_app_date']['field'] = 'field_app_date';
   $handler->display->display_options['fields']['field_app_date']['group_type'] = 'count';
-  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Appointments';
+  $handler->display->display_options['fields']['field_app_date']['label'] = 'Total Medicare Added';
   $handler->display->display_options['fields']['field_app_date']['separator'] = ', ';
   /* Field: Schedule: Changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -7919,6 +7910,119 @@ function reporting_views_views_default_views() {
     'block_10' => 0,
   );
   $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Block TGphPvA */
+  $handler = $view->new_display('block', 'Block TGphPvA', 'block_11');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Percent Proc vs Added';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['type'] = 'area';
+  $handler->display->display_options['style_options']['data_labels'] = 'TRUE';
+  $handler->display->display_options['style_options']['legend_position'] = 'top';
+  $handler->display->display_options['style_options']['yaxis_min'] = '0';
+  $handler->display->display_options['style_options']['label_field'] = 'field_date';
+  $handler->display->display_options['style_options']['data_fields'] = array(
+    'field_date' => 'field_date',
+    'expression' => 'expression',
+    'field_medonc_processed' => 0,
+    'field_medonc_added' => 0,
+  );
+  $handler->display->display_options['style_options']['field_colors'] = array(
+    'field_date' => '#1aadce',
+    'field_medonc_processed' => '#0d233a',
+    'field_medonc_added' => '#8bbc21',
+    'expression' => '#8bbc21',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Daily Report: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'year_month_day',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  $handler->display->display_options['fields']['field_date']['group_columns'] = array(
+    'value' => 'value',
+  );
+  $handler->display->display_options['fields']['field_date']['format_date_sql'] = 1;
+  /* Field: Daily Report: Chemo Added */
+  $handler->display->display_options['fields']['field_chemo_added']['id'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['field'] = 'field_chemo_added';
+  $handler->display->display_options['fields']['field_chemo_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Chemo Processed */
+  $handler->display->display_options['fields']['field_chemo_processed']['id'] = 'field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['table'] = 'field_data_field_chemo_processed';
+  $handler->display->display_options['fields']['field_chemo_processed']['field'] = 'field_chemo_processed';
+  /* Field: Daily Report: Medicare Added */
+  $handler->display->display_options['fields']['field_medicare_added']['id'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['table'] = 'field_data_field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['field'] = 'field_medicare_added';
+  $handler->display->display_options['fields']['field_medicare_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: Medicare Processed */
+  $handler->display->display_options['fields']['field_medicare_processed']['id'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['table'] = 'field_data_field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['field'] = 'field_medicare_processed';
+  $handler->display->display_options['fields']['field_medicare_processed']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Added */
+  $handler->display->display_options['fields']['field_medonc_added']['id'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['table'] = 'field_data_field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['field'] = 'field_medonc_added';
+  $handler->display->display_options['fields']['field_medonc_added']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Daily Report: MedOnc Processed */
+  $handler->display->display_options['fields']['field_medonc_processed']['id'] = 'field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['table'] = 'field_data_field_medonc_processed';
+  $handler->display->display_options['fields']['field_medonc_processed']['field'] = 'field_medonc_processed';
+  /* Field: Global: Math expression */
+  $handler->display->display_options['fields']['expression']['id'] = 'expression';
+  $handler->display->display_options['fields']['expression']['table'] = 'views';
+  $handler->display->display_options['fields']['expression']['field'] = 'expression';
+  $handler->display->display_options['fields']['expression']['label'] = 'Percent Chemo Processed / Added';
+  $handler->display->display_options['fields']['expression']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['expression']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['expression']['set_precision'] = TRUE;
+  $handler->display->display_options['fields']['expression']['precision'] = '2';
+  $handler->display->display_options['fields']['expression']['expression'] = '([field_chemo_processed]/[field_chemo_added])*100';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Daily Report: daily_report type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_daily_report';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'daily_report' => 'daily_report',
+  );
+  /* Filter criterion: Daily Report: Chemo Added (field_chemo_added) */
+  $handler->display->display_options['filters']['field_chemo_added_value']['id'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['table'] = 'field_data_field_chemo_added';
+  $handler->display->display_options['filters']['field_chemo_added_value']['field'] = 'field_chemo_added_value';
+  $handler->display->display_options['filters']['field_chemo_added_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_chemo_added_value']['value']['value'] = '0';
+  $handler->display->display_options['block_description'] = 'ChGrphPvA';
   $export['sum_completed_v_proc'] = $view;
 
   $view = new view();
