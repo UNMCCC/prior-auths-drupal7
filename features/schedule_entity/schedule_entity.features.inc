@@ -23,7 +23,13 @@ function schedule_entity_eck_bundle_info() {
       'entity_type' => 'schedule',
       'name' => 'schedule',
       'label' => 'Schedule',
-      'config' => array(),
+      'config' => array(
+        'managed_properties' => array(
+          'changed' => 'changed',
+          'uid' => 0,
+          'created' => 0,
+        ),
+      ),
     ),
   );
   return $items;

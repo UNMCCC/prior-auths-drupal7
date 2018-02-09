@@ -21,7 +21,7 @@ function schedule_entity_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Read Only',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_activity',
       1 => 'field_app_date',

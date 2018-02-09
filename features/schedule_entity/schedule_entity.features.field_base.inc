@@ -204,18 +204,23 @@ function schedule_entity_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'Appealed' => 'Appealed',
+        'Appealed' => 'Appeal 1',
+        'Appealed2' => 'Appeal 2',
         'Appeal Won' => 'Appeal Won',
         'Appeal Lost' => 'Appeal Lost',
         'Authorized' => 'Authorized',
+        'CallInsurance' => 'Call Insurance',
         'Completed' => 'Completed',
         'Denied' => 'Denied',
-        'Dictation Needed' => 'DIctation Needed',
+        'Dictation Needed' => 'Dictation Needed',
         'Ins. Form Needed' => 'Ins. Form Needed',
         'Medical Necessity' => 'Medical Necessity',
         'No Orders' => 'No Orders',
         'No PA Needed' => 'No PA Needed',
-        'Pending' => 'Pending',
+        'NotWorked' => 'Not Worked',
+        'Pending' => 'Auth Requested',
+        'SCAInitiated' => 'SCA Initiated',
+        'SCAFinal' => 'SCA Final',
       ),
       'allowed_values_function' => '',
     ),
@@ -312,6 +317,31 @@ function schedule_entity_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_sent_to_cerner'.
+  $field_bases['field_sent_to_cerner'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_sent_to_cerner',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'No',
+        1 => 'Yes',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_staff_notes'.
