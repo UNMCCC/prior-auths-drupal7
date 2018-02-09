@@ -14,15 +14,17 @@ class EntityScheduleChemoMigration extends Migration {
 
     $columns = array(
       0 => array('date', 'The scheduled date of appointment'),
-      1 => array('mrn', 'The medical record number'),
-      2 => array('pat_id1', 'Another cryptic unique number used for keys'),
-      3 => array('lastname', 'The patient last name'),
-      4 => array('firstname', 'The scanned first name'),
-      5 => array('middle', 'A Middle name'),
-      6 => array('location', 'The location where patient is scheduled to'),
-      7 => array('activity', 'The activity'),
-      8 => array('ins_provider', 'The insurance provider (ref)'),
-      9 => array('notes', 'Relevant notes'),
+      1 => array('time', 'The scheduled time of appointment'),
+      2 => array('mrn', 'The medical record number'),
+      3 => array('pat_id1', 'Another cryptic unique number used for keys'),
+      4 => array('lastname', 'The patient last name'),
+      5 => array('firstname', 'The scanned first name'),
+      6 => array('middle', 'A Middle name'),
+      7 => array('location', 'The location where patient is scheduled to'),
+      8 => array('activity', 'The activity'),
+      9 => array('ins_provider', 'The insurance provider (ref)'),
+      10 => array('notes', 'Relevant notes'),
+      11 => array('sch_key', 'construct a unique key for migration'),
     );
 
     $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/Chemo_Schedule.csv';
@@ -33,10 +35,11 @@ class EntityScheduleChemoMigration extends Migration {
     $this->destination = new MigrateDestinationEntityAPI('schedule','schedule');
 
     // Tell Migrate the unique IDs for this migration live - watch for multiple appts.
-    $source_key_schema = array('pat_id1' => array(
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+    $source_key_schema = array('sch_key' => array(
+          'type' => 'varchar',
+          'length' => '512',
+          'not null' => TRUE,
+          'description' => 'the patid + activity + DOS is the key',
       ),
     );
 
@@ -83,6 +86,16 @@ class EntityScheduleChemoMigration extends Migration {
     ));
   }
  
+  /**
+   * Prepare a proper unique key.
+  */
+  public function prepareKey($key, $row) {
+    $key = array();
+    $row->sch_key = $row->pat_id1 . $row->activity . $row->date . $row->time;
+    $key['sch_key'] = $row->sch_key;
+    return $key;
+  }
+  
   public function prepareRow($row) {
 
      parent::prepareRow($row);
@@ -102,7 +115,6 @@ class EntityScheduleChemoMigration extends Migration {
   public function getPatientId($row) {
     // query database here, match with $row element,
     // return nid for this person, otherwise false.
-    //$field_values = array();
 
     // Search for an already migrated person entity with the same title
     // (title is "givenName" "surName")

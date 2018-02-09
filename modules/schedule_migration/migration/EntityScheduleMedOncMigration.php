@@ -14,15 +14,17 @@ class EntityScheduleMedOncMigration extends Migration {
 
     $columns = array(
       0 => array('date', 'The scheduled date of appointment'),
-      1 => array('mrn', 'The medical record number'),
-      2 => array('pat_id1', 'Another cryptic unique number used for keys'),
-      3 => array('lastname', 'The patient last name'),
-      4 => array('firstname', 'The scanned first name'),
-      5 => array('middle', 'A Middle name'),
-      6 => array('location', 'The location where patient is scheduled to'),
-      7 => array('activity', 'The activity'),
-      8 => array('ins_provider', 'The insurance provider (ref)'),
-      9 => array('notes', 'Relevant notes'),
+      1 => array('time', 'The scheduled time of appointment'),
+      2 => array('mrn', 'The medical record number'),
+      3 => array('pat_id1', 'Another cryptic unique number used for keys'),
+      4 => array('lastname', 'The patient last name'),
+      5 => array('firstname', 'The scanned first name'),
+      6 => array('middle', 'A Middle name'),
+      7 => array('location', 'The location where patient is scheduled to'),
+      8 => array('activity', 'The activity'),
+      9 => array('ins_provider', 'The insurance provider (ref)'),
+     10 => array('notes', 'Relevant notes'),
+     11 => array('sch_key', 'construct a unique key for migration')
     );
 
     $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/MO_Schedule.csv';
@@ -33,10 +35,11 @@ class EntityScheduleMedOncMigration extends Migration {
     $this->destination = new MigrateDestinationEntityAPI('schedule','schedule');
 
     // Tell Migrate the unique IDs for this migration live - watch for multiple appts.
-    $source_key_schema = array('pat_id1' => array(
-        'type' => 'int',
-        'unsigned' => TRUE,
+    $source_key_schema = array('sch_key' => array(
+        'type' => 'varchar',
+        'length' => '512',
         'not null' => TRUE,
+        'description' => 'the order id name is the key',
       ),
     );
 
@@ -50,6 +53,7 @@ class EntityScheduleMedOncMigration extends Migration {
       ->description('lookup insurance term in prepareRow'); // spin off term ref, or not?
     $this->addFieldMapping('field_patient_reference1', 'pat_id1')
       ->description('lookup existing identifiers or create one in prepareRow');
+
     $this->addFieldMapping('field_notes', 'notes');
 
     // Assign these schedules to whoever process the medical oncology schedules.
@@ -87,7 +91,16 @@ class EntityScheduleMedOncMigration extends Migration {
       'field_department:ignore_case',
     ));
   }
- 
+
+  /**
+   * Prepare a proper unique key.
+  */
+  public function prepareKey($key, $row) {
+        $key = array();
+        $row->sch_key = $row->pat_id1 . $row->activity . $row->date . $row->time;
+        $key['sch_key'] = $row->sch_key;
+        return $key;
+  }
   public function prepareRow($row) {
 
      parent::prepareRow($row);
@@ -103,6 +116,8 @@ class EntityScheduleMedOncMigration extends Migration {
     if($pat_id1>0){
         $row->pat_id1 = $pat_id1;
     }else{
+
+        watchdog('schedule_migration', "orphan schedule? : $row->lastname, $row->pat_id1, $row->date");
         return FALSE;
     }
   }
@@ -136,7 +151,7 @@ class EntityScheduleMedOncMigration extends Migration {
         watchdog('schedule_migration', "orphan medonc schedule : $row->lastname, $row->start_date");
         return;
     }
-    return $nid;  
+    return;
   }
 
 

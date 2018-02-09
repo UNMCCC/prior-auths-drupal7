@@ -32,6 +32,7 @@ class ContentOrderSamedayMigration extends Migration {
       9 => array('order_status', 'The order status'),
       10 => array('orc_id_drug', 'Dummy field'),
       11 => array('sch_id', 'Dummy field'),
+      12 => array('uid_as_fct_min','to se set depending on current minute'),
    );
 
    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/sameday_orders.csv';
@@ -54,7 +55,8 @@ class ContentOrderSamedayMigration extends Migration {
 
     $this->destination = new MigrateDestinationNode('order');
 
-    $this->addFieldMapping('uid')->defaultValue(1);
+    $this->addFieldMapping('uid','uid_as_fct_min')
+       ->description('UID depends on whether 00,10,20,30,40 or 50');
     $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('sticky')->defaultValue(0);
     $this->addFieldMapping('revision')->defaultValue(0);
@@ -131,6 +133,15 @@ class ContentOrderSamedayMigration extends Migration {
     // Is there a chemo sch?
     $schid = $this->getSchID($patid);
     $row->sch_id = $schid;
+
+    // What time is it? Depending on that, assign to a staff or other.
+    $mymin = date("i");
+    $dmin = floor($mymin/10);
+    if (($dmin % 2) == 1)
+      { $row->uid_as_fct_min = 298 ;}
+    if (($dmin % 2) == 0)
+      { $row->uid_as_fct_min = 302;}
+
   }
 
   public function getPatID($row) {
