@@ -531,6 +531,15 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_patient_reference1_schedule']['id'] = 'reverse_field_patient_reference1_schedule';
+  $handler->display->display_options['relationships']['reverse_field_patient_reference1_schedule']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_patient_reference1_schedule']['field'] = 'reverse_field_patient_reference1_schedule';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -581,6 +590,11 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['created']['date_format'] = 'long';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['path'] = 'admin/all-things-patient/%';
   $export['all_things_patient'] = $view;
 
@@ -1650,6 +1664,14 @@ function administrative_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = 'Displaying @start - @end of @total <br/>
+
+Use this interface to research a patient. Enter a Last Name, you\'ll get a list of patients with that last name, first, DOS and more info. You will select (click!) your patient, which will direct you a new page with a table of all the schedules associated with that patient. Moreover, it will allow you to EDIT any of these schedules, which is useful to reassign the MO/RO/Chemo/Medicare categories.';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -1710,7 +1732,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['filters']['field_mq_pat_id_value']['field'] = 'field_mq_pat_id_value';
   $handler->display->display_options['filters']['field_mq_pat_id_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['operator_id'] = 'field_mq_pat_id_value_op';
-  $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['label'] = 'Pat ID ';
+  $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['label'] = 'Pat ID (Mosaiq)';
   $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['operator'] = 'field_mq_pat_id_value_op';
   $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['identifier'] = 'field_mq_pat_id_value';
   $handler->display->display_options['filters']['field_mq_pat_id_value']['expose']['remember_roles'] = array(
