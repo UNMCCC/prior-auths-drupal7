@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Labs Views feature.
+ */
+
+include_once 'labs_views.features.inc';

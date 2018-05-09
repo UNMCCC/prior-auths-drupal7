@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Labs Entity feature.
+ */
+
+include_once 'labs_entity.features.inc';

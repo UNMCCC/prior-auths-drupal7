@@ -1,0 +1,9 @@
+name = Labs Migration
+description = "Provides a base migration from the lab orders."
+core = 7.x
+dependencies[] = migrate
+dependencies[] = migrate_ui
+dependencies[] = migrate_extras
+; Migration classes
+files[] = migration/ContentLabsPatientMigration.php
+files[] = migration/EntityLabsMigration.php

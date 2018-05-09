@@ -1,0 +1,7 @@
+name = HSP Codes Taxonomy
+core = 7.x
+package = Prior Auths
+features[features_api][] = api:2
+features[taxonomy][] = hsp_codes
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][taxonomy] = taxonomy

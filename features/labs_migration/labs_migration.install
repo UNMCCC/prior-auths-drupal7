@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Labs Migration module.
+ */
+
+  function labs_migration_install() {
+    migrate_static_registration();
+  }
+
+  function labs_migration_disable() {
+    MigrateGroup::deregister('labs');
+  }
