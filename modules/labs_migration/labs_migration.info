@@ -6,4 +6,6 @@ dependencies[] = migrate_ui
 dependencies[] = migrate_extras
 ; Migration classes
 files[] = migration/ContentLabsPatientMigration.php
+files[] = migration/ContentLabsPastDupesPatientMigration.php
 files[] = migration/EntityLabsMigration.php
+files[] = migration/EntityLabsPastDupesMigration.php

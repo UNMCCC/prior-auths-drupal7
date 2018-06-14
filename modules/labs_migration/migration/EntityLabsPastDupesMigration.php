@@ -1,9 +1,9 @@
 <?php
 /**
  * @file
- * Definition of EntityLabsMigration.
+ * Definition of EntityLabsPastDupesMigration.
  */
-class EntityLabsMigration extends Migration {
+class EntityLabsPastDupesMigration extends Migration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
@@ -29,7 +29,7 @@ class EntityLabsMigration extends Migration {
       13 => array('uid_as_fct_min','to se set depending on current minute'),
     );
 
-    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/labs.csv';
+    $csv_file = DRUPAL_ROOT . '/' . 'sites/default/files/imports/labs_past_with_dupes.csv';
 
     $this->source = new MigrateSourceCSV($csv_file, $columns, $options);
     $this->body = t('Labs orders Add Ons');
@@ -41,12 +41,11 @@ class EntityLabsMigration extends Migration {
           'type' => 'varchar',
           'length' => '512',
           'not null' => TRUE,
-          'description' => 'the lab order id and start date are the uniques key',
+          'description' => 'the lab order id and start date are the unique keys',
       ),
     );
 
     $this->map = new MigrateSQLMap($this->machineName, $source_key_schema, $this->destination->getKeySchema('labs'));
-
 
     $this->addFieldMapping('field_start_date', 'start_date'); // may need to work on
     $this->addFieldMapping('field_cpt_code', 'hsp_code')
@@ -58,10 +57,11 @@ class EntityLabsMigration extends Migration {
     $this->addFieldMapping('field_create_date', 'lab_order_create_date');
     $this->addFieldMapping('field_ordering_md', 'provider_last')
         ->description('add first name in prepareRow');
-    //Change the UID when needed -- alternation on hold.
+    //Change the UID when needed!
     //$this->addFieldMapping('uid','uid_as_fct_min')
-    //    ->description('UID assignment depends on what time of day');
-    $this->addFieldMapping('uid')->defaultValue('1091');
+    //    ->description('UID depends on whether 05 or 35');
+    $this->addFieldMapping('uid','uid_as_fct_min')->defaultValue('1091'); //emorin
+
     $this->addUnmigratedSources(array(
       'hsp_code_description',  // already there.
       'pat_last',
@@ -115,25 +115,45 @@ class EntityLabsMigration extends Migration {
     // concat MD name.
     $row->provider_last .= ', ' . $row->provider_first;
 
-    // What time is it? execute at HH:05 and HH:35.
-    // send all to 1092, per Cheryl -- she'd transfer -- FMLA
-
-   // $mymin = date("i");
-   // $myhour = date("H");
-   // if($myhour <13){    // before 1 is all Erin
-   //    $row->uid_as_fct_min = 1091;
-   // }elseif($myhour>=16){  // after 4, all jackie.
-   //    $row->uid_as_fct_min = 1092;
-   // }elseif(($myhour>=13) and ($myhour<16)){ // Alternate
-   //   $dmin = floor($mymin/10);
-   //   if (($dmin % 2) == 1)
-   //    { $row->uid_as_fct_min = 1092 ;}  // Jackie V. at :35 echo((floor(35/10)) % 2);
-   //   if (($dmin % 2) == 0)
-   //    { $row->uid_as_fct_min = 1091;}   // Erin M. at :05   echo((floor(5/10)) % 2);
-   // }
     // Is there a pat Id1?
     $pat_id1 = $this->getPatientId($row);
     $row->pat_id1 = $pat_id1;
+
+    // let's not rely on mappings of previous imports (migrate classes)
+    // and query the system for existing nodes.
+
+    // do we have this lab?
+    $labExists = $this->getLab($row);
+    if($labExists){
+      return FALSE; // otherwise import this lab (row)
+    }
+
+  }
+
+  public function getLab($row) {
+   // query database here, match with $row element, if exists, return false.
+   // Search for an already migrated lab order.
+
+   //prep query parameters term and dates
+    $tid = key(taxonomy_get_term_by_name($row->hsp_code));
+    $start_date = date("Y-m-d H:i:s", strtotime($row->start_date));
+    $end_date = date("Y-m-d", strtotime($row->start_date)) . ' 23:59:59';
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'labs');
+    $query->entityCondition('bundle', 'labs');
+    $query->fieldCondition('field_cpt_code', 'tid', $tid);
+    $query->fieldCondition('field_patient_reference1', 'target_id',(int)$row->pat_id1, '=');
+    $query->fieldCondition('field_start_date', 'value', $start_date, '>=');
+    $query->fieldCondition('field_start_date', 'value', $end_date, '<=');
+    $results = $query->execute();
+    if (empty($results['labs'])) {
+     // $this->queueMessage('This is a new lab order');
+      return FALSE;
+    }else{
+      $this->queueMessage('This lab order was previously imported; skip it',MigrationBase::MESSAGE_INFORMATIONAL);
+      return;
+    }
   }
 
   public function getPatientId($row) {
@@ -152,7 +172,7 @@ class EntityLabsMigration extends Migration {
       $results = $query->execute();
       if (!empty($results['node'])) {
         $nid = reset($results['node'])->nid;
-//        watchdog('labs_migration', "query matches: $nid");
+        $this->queueMessage('There is a patient in the system', MigrationBase::MESSAGE_INFORMATIONAL);
         return($nid);
       }else{
        // make a new patient to-do  --- should just run the previous migration...
@@ -160,7 +180,7 @@ class EntityLabsMigration extends Migration {
       }
     }else{
         //there is no MRN, this is an orphan order
-        watchdog('labs_migration', "orphan lab? : $row->last_name, $row->start_date");
+        $this->queueMessage('This lab may not have a patient associated with it', MigrationBase::MESSAGE_INFORMATIONAL);
     }
     return;
   }

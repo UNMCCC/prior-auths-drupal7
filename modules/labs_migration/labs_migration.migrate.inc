@@ -20,10 +20,15 @@ function labs_migration_migrate_api() {
       'ContentLabsPatient' => array(
         'class_name' => 'ContentLabsPatientMigration',
       ),
+      'ContentLabsPastDupesPatient' => array(
+        'class_name' => 'ContentLabsPastDupesPatientMigration',
+      ),
       'EntityLabs' => array(
         'class_name' => 'EntityLabsMigration',
       ),
-      
+      'EntityLabsPastDupes' => array(
+        'class_name' => 'EntityLabsPastDupesMigration',
+      ),
     ),
   );
 
