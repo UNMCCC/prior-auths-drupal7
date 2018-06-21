@@ -1,0 +1,9 @@
+name = Surgery Migration
+description = "Provides a base migration from the patient surgery orders."
+core = 7.x
+dependencies[] = migrate
+dependencies[] = migrate_ui
+dependencies[] = migrate_extras
+; Migration classes
+files[] = migration/ContentSurgeryPatientMigration.php
+files[] = migration/EntitySurgeryMigration.php
