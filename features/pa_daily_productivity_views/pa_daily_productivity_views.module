@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PA Daily Productivity Views feature.
+ */
+
+include_once 'pa_daily_productivity_views.features.inc';

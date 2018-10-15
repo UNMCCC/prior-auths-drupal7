@@ -1,0 +1,14 @@
+name = PA Daily Productivity Views
+core = 7.x
+package = Prior Auths
+dependencies[] = charts
+dependencies[] = views
+dependencies[] = views_data_export
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = pa_productivity_reports
+features[views_view][] = stats_chemo_pa_productivity_reports
+features[views_view][] = stats_medicare_pa_productivity_reports
+features[views_view][] = stats_medonc_pa_productivity_reports
+features[views_view][] = stats_radonc_pa_productivity_reports
+features_exclude[dependencies][ctools] = ctools

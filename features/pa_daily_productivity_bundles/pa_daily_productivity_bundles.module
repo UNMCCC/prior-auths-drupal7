@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PA Daily Productivity Bundles feature.
+ */
+
+include_once 'pa_daily_productivity_bundles.features.inc';
